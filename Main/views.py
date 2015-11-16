@@ -1,7 +1,11 @@
 from django.shortcuts import render, render_to_response
 from models import *
-import csv
+import csv, simplejson
 from datetime import datetime, timedelta
+from django.http import HttpResponse
+from django.template import RequestContext
+from django.core import serializers
+import json
 
 
 places = ['alpharetta', 'buckhead', 'decatur', 'gt', 'marietta', 'peachtree', 'sandy', 'stone']
@@ -9,25 +13,23 @@ folders = ['Event', 'Week']
 
 # Create your views here.
 def main(request):
-    return render_to_response('infoFinal/index.html')
+    return render_to_response('index.html', RequestContext(request))
+    #return render_to_response('infoFinal/index.html')
 
 
 def request_data(request):
-    #pickup(start_pos)
-    #destination
-    #cartype
-    #start time
-    #end time
 
     start_pos = request.POST['start_pos']
-    start_pos = request.POST['cartype']
-    start_pos = request.POST['startTime']
-    start_pos = request.POST['endTime']
+    car_type = request.POST['car_type']
+    start_time = request.POST['start_time']
+    end_time = request.POST['end_time']
 
 
+    result = Uber.objects.filter(start_pos=start_pos, timestamp__range=["2015-11-01", "2015-11-02"], car_type=car_type)
+    data = serializers.serialize("json", result)
+    print type(data)
 
-
-    return render_to_response('infoFinal/index.html')
+    return HttpResponse(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')), 'application/json')
 
 
 def save_data(request):

@@ -23,4 +23,7 @@ urlpatterns = [
     url(r'^$', main),
     url(r'^save_data$', save_data),
     url(r'^save_data2$', save_data2),
+    url(r'^request_data', request_data),
+
+
 ]
