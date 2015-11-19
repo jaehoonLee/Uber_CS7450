@@ -30,9 +30,13 @@ body {
     <div id="chart"></div>
     <form action="/request_data/" method="POST">
         {% csrf_token %}
+        Start Position: (0 = Apharetta, 1 = Buckhead, 2 = Decatur, 3 = GT, 4 = Marietta, 5 = Peachtree, 6 = Sandy, 7 = Stone Mountain)
         <input type="text" name="start_pos" value="0"><br>
+        Car Type: (0 = UberX, 1 = UberXL, 2 = UberSelect, 3 = UberBLACK, 4 = UberSUV)
         <input type="text" name="car_type" value="0"><br>
+        Start Date:
         <input type="text" name="start_time" value="2015-11-01"><br>
+        End Date:
         <input type="text" name="end_time" value="2015-11-02"><br>
         <input type="submit">
     </form>
