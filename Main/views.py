@@ -13,7 +13,26 @@ folders = ['Event', 'Week']
 
 # Create your views here.
 def main(request):
-    return render_to_response('index.html', RequestContext(request))
+
+    ubers = Uber.objects.filter(start_pos=0, timestamp__range=["2015-11-01", "2015-11-02"], car_type=0)
+    results = []
+
+    for uber in ubers:
+        result = {}
+        for i in uber._meta.fields:
+            if isinstance(getattr(uber, i.name), datetime):
+                result[i.name] = getattr(uber, i.name).strftime('%Y-%m-%d %H:%M')
+
+            else :
+                result[i.name] = getattr(uber, i.name)
+
+            #print getattr(uber, i.name)
+        results.append(result)
+
+    data = simplejson.dumps(results, indent=4, sort_keys=True)
+
+
+    return render_to_response('index.html', RequestContext(request, {'data' : data}))
     #return render_to_response('infoFinal/index.html')
 
 
@@ -25,11 +44,24 @@ def request_data(request):
     end_time = request.POST['end_time']
 
 
-    result = Uber.objects.filter(start_pos=start_pos, timestamp__range=["2015-11-01", "2015-11-02"], car_type=car_type)
-    data = serializers.serialize("json", result)
-    print type(data)
+    ubers = Uber.objects.filter(start_pos=start_pos, timestamp__range=["2015-11-01", "2015-11-02"], car_type=car_type)
+    results = []
 
-    return HttpResponse(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')), 'application/json')
+    for uber in ubers:
+        result = {}
+        for i in uber._meta.fields:
+            if isinstance(getattr(uber, i.name), datetime):
+                result[i.name] = getattr(uber, i.name).strftime('%Y-%m-%d %H:%M')
+
+            else :
+                result[i.name] = getattr(uber, i.name)
+
+            #print getattr(uber, i.name)
+        results.append(result)
+
+    data = simplejson.dumps(results, indent=4, sort_keys=True)
+
+    return HttpResponse(data)
 
 
 def save_data(request):
