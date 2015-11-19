@@ -44,7 +44,7 @@ def request_data(request):
     end_time = request.POST['end_time']
 
 
-    ubers = Uber.objects.filter(start_pos=start_pos, timestamp__range=["2015-11-01", "2015-11-02"], car_type=car_type)
+    ubers = Uber.objects.filter(start_pos=start_pos, timestamp__range=[start_time, end_time], car_type=car_type)
     results = []
 
     for uber in ubers:
