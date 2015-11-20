@@ -32,7 +32,7 @@ function init(){
     d3.json("static/uber.json", function(error, data) {
 	data.forEach(function(d) {
             d.key = parseDate(d.timestamp);
-	    console.log(d.key);
+	    //console.log(d.key);
             d.values = +d.estimated_waiting_time;
 	});
 	
@@ -56,7 +56,7 @@ function init(){
 }
 //Called when the update button is clicked
 function updateClicked(){
-    d3.csv('data/CoffeeData.csv',update)
+    //d3.csv('data/CoffeeData.csv',update)
 }
 
 //Callback for when data is loaded
@@ -124,15 +124,19 @@ function update(rawdata){
 
 // Returns the selected option in the X-axis dropdown. Use d[getXSelectedOption()] to retrieve value instead of d.getXSelectedOption()
 function getXSelectedOption(){
+    /*
   var node = d3.select('#xdropdown').node();
   var i = node.selectedIndex;
   return node[i].value;
+  */
 }
 
 // Returns the selected option in the X-axis dropdown. 
 function getYSelectedOption(){
+    /*
   var node = d3.select('#ydropdown').node();
-  var i = node.selectedIndex;
+  //var i = node.selectedIndex;
   return node[i].value;
+  */
 }
 
