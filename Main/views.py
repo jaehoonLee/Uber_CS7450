@@ -4,6 +4,7 @@ import csv, simplejson
 from datetime import datetime, timedelta
 from django.http import HttpResponse
 from django.template import RequestContext
+from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 import json
 
@@ -32,10 +33,10 @@ def main(request):
     data = simplejson.dumps(results, indent=4, sort_keys=True)
 
 
-    return render_to_response('index.html', RequestContext(request, {'data' : data}))
+    return render_to_response('index_main.html', RequestContext(request, {'data' : data}))
     #return render_to_response('infoFinal/index.html')
 
-
+@csrf_exempt
 def request_data(request):
 
     start_pos = request.POST['start_pos']

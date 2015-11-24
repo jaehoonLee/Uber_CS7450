@@ -1,126 +1,185 @@
 var xoption = getXSelectedOption()
 var yoption = getYSelectedOption()
 // Gets called when the page is loaded.
+var svg_coffee, parseDate, xAxis, yAxis, valueline, x, y, margin_cof, width_cof, height_cof;
+
 function init(){
-    var margin = {top: 30, right: 20, bottom: 30, left: 50},
-    width = 600 - margin.left - margin.right,
-    height = 270 - margin.top - margin.bottom;
-    
-    var parseDate = d3.time.format("%Y-%m-%d %H:%M").parse;
 
-    var x = d3.time.scale().range([0, width]);
-    var y = d3.scale.linear().range([height, 0]);
+    margin_cof = {top: 30, right: 20, bottom: 30, left: 50},
+    width_cof = 600 - margin_cof.left - margin_cof.right,
+    height_cof = 270 - margin_cof.top - margin_cof.bottom;
 
-    var xAxis = d3.svg.axis().scale(x)
+    parseDate = d3.time.format("%Y-%m-%d %H:%M").parse;
+
+    x = d3.time.scale().range([0, width_cof]);
+    y = d3.scale.linear().range([height_cof, 0]);
+
+    xAxis = d3.svg.axis().scale(x)
 	.orient("bottom").ticks(5);
 
-    var yAxis = d3.svg.axis().scale(y)
+    yAxis = d3.svg.axis().scale(y)
 	.orient("left").ticks(5);
 
-    var valueline = d3.svg.line()
+    valueline = d3.svg.line()
 	.x(function(d) { return x(d.key); })
 	.y(function(d) { return y(d.values); });
-    
-    var svg = d3.select("#vis")
-	.append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-	.append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // Get the data
-    d3.json("static/uber.json", function(error, data) {
-	data.forEach(function(d) {
-            d.key = parseDate(d.timestamp);
-	    //console.log(d.key);
-            d.values = +d.estimated_waiting_time;
-	});
-	
-	// Scale the range of the data
-	x.domain(d3.extent(data, function(d) { return d.key; }));
-	y.domain([0, d3.max(data, function(d) { return d.values; })]);
-	
-	svg.append("path")      // Add the valueline path.
-            .attr("d", valueline(data));
-
-	svg.append("g")         // Add the X Axis
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
-
-	svg.append("g")         // Add the Y Axis
-            .attr("class", "y axis")
-            .call(yAxis);
+    $.post("/request_data/",
+    {
+        start_pos: "0",
+        car_type: "0",
+        start_time: "2015-10-27",
+        end_time: "2015-11-02"
+    },
+    function(data, status){
+        updateClicked(data);
 
     });
+
 }
+
 //Called when the update button is clicked
-function updateClicked(){
+function updateClicked(data){
     //d3.csv('data/CoffeeData.csv',update)
-}
+    //alert("Data: " + data + "\nStatus: " + status);
 
-//Callback for when data is loaded
-function update(rawdata){
-    // get the updated option to display the corresponding data
-    var xoption = getXSelectedOption()
-    var yoption = getYSelectedOption()
+    d3.select("#vis").html("")
 
-    //PUT YOUR UPDATE CODE BELOW
-    rawdata.forEach(function(d) {
-    d.sales = +d.sales
-    d.profit = +d.profit
-    })
-    
-    // aggregate data to get summation stats
-    var data = d3.nest()
-	.key(function(d) { return d[xoption];})
-	.rollup(function(d) {
-	    return d3.sum(d, function(g) {return g[yoption]; });
-	}).entries(rawdata);
-    console.log(data)
+    svg_coffee = d3.select("#vis")
+    .append("svg")
+    .attr("width", width_cof + margin_cof.left + margin_cof.right)
+    .attr("height", height_cof + margin_cof.top + margin_cof.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin_cof.left + "," + margin_cof.top + ")");
+    data = jQuery.parseJSON(data);
 
-    // set domains and x and y axes
-    x.domain(data.map(function(d) { return d.key; }));
-    y.domain([0, d3.max(data, function(d) {return d.values; })]);
-    
-    // remove existing x and y labels and append new ones
-    chart.select("g.y.axis").remove();
-    chart.select("g.x.axis").remove();
-    chart.select("text.x.label").remove();
-    chart.append("g")
-	.attr("class", "x axis")
-	.attr("transform", "translate(0," + height + ")")
-	.call(xAxis)
-	.selectAll("text")
-	.style("text-anchor", "end")
-	.attr("dx", "-.8em")
-	.attr("dy", "-.55em")
-	.attr("transform", "rotate(-90)" );
-    
-    chart.append("g")
+    data.forEach(function(d) {
+        d.key = parseDate(d.timestamp);
+        //console.log(d.key);
+        d.values = +d.estimated_waiting_time;
+    });
+
+    // Scale the range of the data
+    x.domain(d3.extent(data, function(d) { return d.key; }));
+    y.domain([0, d3.max(data, function(d) { return d.values; })]);
+
+    svg_coffee.append("path")      // Add the valueline path.
+        .attr("d", valueline(data));
+
+    svg_coffee.append("g")         // Add the X Axis
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height_cof + ")")
+        .call(xAxis);
+
+    svg_coffee.append("g")         // Add the Y Axis
         .attr("class", "y axis")
-        .call(yAxis)
-	.append("text")
-	.text("Value ($)");
+        .call(yAxis);
 
-    chart.append("text")
-	.attr("class", "x label")
-	.attr("text-anchor", "end")
-	.attr("x", width/2)
-	.attr("y", height + margin.bottom-3)
-	.text(xoption);
-    
-    // transition the bars to display new data
-    var bar = chart.selectAll("rect")
-        .data(data)
-	.transition()
-	.duration(700)
-	.attr("x", function(d) { return x(d.key);})
-	.attr("width", x.rangeBand())
-	.attr("y", function(d) { return y(d.values);})
-	.attr("height", function(d) { return height - y(d.values); });
+    //for slider part-----------------------------------------------------------------------------------
+    var margin = {top: 20, right: 200, bottom: 100, left: 50},
+    margin2 = { top: 430, right: 10, bottom: 20, left: 40 },
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom,
+    height2 = 500 - margin2.top - margin2.bottom;
+
+    var xScale = d3.time.scale()
+    .range([0, width]),
+
+    xScale2 = d3.time.scale()
+    .range([0, width]); // Duplicate xScale for brushing ref later
+
+    var yScale = d3.scale.linear()
+    .range([height, 0]);
+
+
+
+    var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom) //height + margin.top + margin.bottom
+     .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// Create invisible rect for mouse tracking
+    svg.append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("id", "mouse-tracker")
+    .style("fill", "white");
+
+    var context = svg.append("g") // Brushing context box container
+        .attr("transform", "translate(" + 0 + "," + 410 + ")")
+        .attr("class", "context");
+
+//append clip path for lines plotted, hiding those part out of bounds
+    svg.append("defs")
+        .append("clipPath")
+        .attr("id", "clip")
+        .append("rect")
+        .attr("width", width)
+        .attr("height", height);
+
+//end slider part-----------------------------------------------------------------------------------
+//for slider part-----------------------------------------------------------------------------------
+
+    var brush = d3.svg.brush()//for slider bar at the bottom
+        .x(xScale2)
+        .on("brush", brushed);
+
+    context.append("g") // Create brushing xAxis
+        .attr("class", "x axis1")
+        .attr("transform", "translate(0," + height2 + ")")
+        .call(xAxis2);
+
+    var contextArea = d3.svg.area() // Set attributes for area chart in brushing context graph
+        .interpolate("monotone")
+        .x(function(d) { return xScale2(d.date); }) // x is scaled to xScale2
+        .y0(height2) // Bottom line begins at height2 (area chart not inverted)
+        .y1(0); // Top line of area, 0 (area chart not inverted)
+
+    //plot the rect as the bar at the bottom
+    context.append("path") // Path is created using svg.area details
+        .attr("class", "area")
+        .attr("d", contextArea(categories[0].values)) // pass first categories data .values to area path generator
+        .attr("fill", "#F1F1F2");
+
+    //append the brush for the selection of subsection
+    context.append("g")
+        .attr("class", "x brush")
+        .call(brush)
+        .selectAll("rect")
+        .attr("height", height2) // Make brush rects same height
+        .attr("fill", "#E6E7E8");
+    //end slider part-----------------------------------------------------------------------------------
+
+    //for brusher of the slider bar at the bottom
+  function brushed() {
+
+    xScale.domain(brush.empty() ? xScale2.domain() : brush.extent()); // If brush is empty then reset the Xscale domain to default, if not then make it the brush extent
+
+    svg.select(".x.axis") // replot xAxis with transition when brush used
+          .transition()
+          .call(xAxis);
+
+    maxY = findMaxY(categories); // Find max Y rating value categories data with "visible"; true
+    yScale.domain([0,maxY]); // Redefine yAxis domain based on highest y value of categories data with "visible"; true
+
+    svg.select(".y.axis") // Redraw yAxis
+      .transition()
+      .call(yAxis);
+
+    issue.select("path") // Redraw lines based on brush xAxis scale and domain
+      .transition()
+      .attr("d", function(d){
+          return d.visible ? line(d.values) : null; // If d.visible is true then draw line for this d selection
+      });
+
+  };
 
 }
+
 
 // Returns the selected option in the X-axis dropdown. Use d[getXSelectedOption()] to retrieve value instead of d.getXSelectedOption()
 function getXSelectedOption(){

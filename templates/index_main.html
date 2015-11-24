@@ -1,0 +1,141 @@
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>CoffeeVis</title>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="static/js/coffee.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/semantic/semantic.min.css">
+    <script src="static/semantic/semantic.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="static/infoFinal/operations.js"></script>
+    <style>
+        path {
+            stroke: steelblue;
+            stroke-width: 2;
+            fill: none;
+        }
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+        <!--  Heatmap -->
+        rect.bordered {
+            stroke: #E6E6E6;
+            stroke-width:2px;
+        }
+
+        text.mono {
+            font-size: 9pt;
+            font-family: Consolas, courier;
+            fill: #aaa;
+        }
+
+        text.axis-workweek {
+            fill: #000;
+        }
+
+        text.axis-worktime {
+            fill: #000;
+        }
+    </style>
+</head>
+<body onload="init()" ng-app="myApp" ng-controller="myController"> <!-- init() method defined in coffee.js-->
+<div id="content">
+    <div id="controlSection" class="bordered">
+        <div id="pickupLocation" class="float">
+            <!-- <div id=""> -->
+            <label>Pickup Location</label>
+            <!-- </div> -->
+            <!-- <div id="pickupSelect"> -->
+            <select
+                    ng-options="operation.name for operation in operationList"
+                    ng-model="selectedOperation"
+                    ng-change="checkOption()"
+                    class="form-control">
+            </select>
+            <!-- </div> -->
+        </div>
+
+        <div id="destination" class="float">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon">Destination</span>
+                <input class="form-control" type="text" ng-model="param.factor" ng-change=""  placeholder="Piedmont Park">
+            </div>
+        </div>
+
+        <div id="carType" class="float">
+            <button id="" class="btn btn-default" onclick="compute(0)">UberX</button>
+            <button id="" class="btn btn-default" onclick="compute(1)">UberXL</button>
+            <button id="" class="btn btn-default" onclick="compute(2)">UberBlack</button>
+            <button id="" class="btn btn-default" onclick="compute(3)">UberSUV</button>
+            <button id="" class="btn btn-default" onclick="compute(4)">UberSelect</button>
+        </div>
+    </div>
+
+    <div id="infovis" class="bordered">
+        <div id="infovis1" class="bordered"></div>
+        <div id="infovis2" class="bordered"></div>
+    </div>
+</div>
+
+
+<div style="margin:30;">
+    <div style="display: table-cell; width: 120;">
+        <label for="xdropdown">X: </label><select id="xdropdown">
+        <option val="timestamp">time</option>
+    </select>
+    </div>
+    <div style="display: table-cell; width: 190;">
+        <label for="ydropdown">Y: </label><select id="ydropdown">
+        <option val="surge_multiplier">surge multiplier</option>
+        <option val="estimated_waiting_time">estimated waiting time</option>
+    </select>
+    </div>
+    <div style="display: table-cell; width: 150;">
+        <button id="update" onclick="updateClicked()">Update</button>
+    </div>
+</div>
+
+<div id="vis"></div>
+
+<div id="chart"></div>
+<div id="dataset-picker">
+</div>
+<script src="static/js/heatmap.js"></script>
+<script src="static/js/util.js"></script>
+<script>
+// ng-app="formApp" ng-controller="formController"
+<!-- WE WILL PROCESS OUR FORM HERE -->
+// define angular module/app
+var myApp = angular.module('myApp', []);
+
+// create angular controller and pass in $scope and $http
+function myController($scope) {
+	$scope.operationList = [
+	{
+		name: 'Georgia Tech',
+	  	operation: MyOperations.convolution
+	},
+	{
+		name: 'Place 1',
+	  operation: MyOperations.convolution
+	},
+	{
+		name: 'Place 2',
+	  operation: MyOperations.convolution
+	},
+	{
+		name: 'Place 3',
+	  	operation: MyOperations.convolution
+	}];
+
+	$scope.selectedOperation = $scope.operationList[0];
+
+}
+
+</script>
+</body>
+</html>
