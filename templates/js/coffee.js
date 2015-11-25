@@ -76,6 +76,7 @@ function updateClicked(data){
         .attr("class", "y axis")
         .call(yAxis);
 
+    /*
     //for slider part-----------------------------------------------------------------------------------
     var margin = {top: 20, right: 200, bottom: 100, left: 50},
     margin2 = { top: 430, right: 10, bottom: 20, left: 40 },
@@ -177,25 +178,6 @@ function updateClicked(data){
       });
 
   };
-
-}
-
-
-// Returns the selected option in the X-axis dropdown. Use d[getXSelectedOption()] to retrieve value instead of d.getXSelectedOption()
-function getXSelectedOption(){
-    /*
-  var node = d3.select('#xdropdown').node();
-  var i = node.selectedIndex;
-  return node[i].value;
-  */
-}
-
-// Returns the selected option in the X-axis dropdown. 
-function getYSelectedOption(){
-    /*
-  var node = d3.select('#ydropdown').node();
-  //var i = node.selectedIndex;
-  return node[i].value;
-  */
+    */
 }
 

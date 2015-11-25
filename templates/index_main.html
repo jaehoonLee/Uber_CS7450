@@ -7,8 +7,7 @@
     <script src="static/js/coffee.js"></script>
     <link rel="stylesheet" type="text/css" href="static/semantic/semantic.min.css">
     <script src="static/semantic/semantic.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-    <script src="static/infoFinal/operations.js"></script>
+
     <style>
         path {
             stroke: steelblue;
@@ -42,22 +41,32 @@
         }
     </style>
 </head>
+<script>
+  $(document)
+    .ready(function() {
+      $('.ui.selection.dropdown').dropdown();
+      $('.ui.menu .ui.dropdown').dropdown({
+        on: 'hover'
+      });
+    })
+  ;
+  </script>
 <body onload="init()" ng-app="myApp" ng-controller="myController"> <!-- init() method defined in coffee.js-->
+<div>
+
+
 <div id="content">
+    <div class="ui selection dropdown">
+  <input type="hidden" name="gender">
+  <i class="dropdown icon"></i>
+  <div class="default text">Gender</div>
+  <div class="menu">
+    <div class="item" data-value="1">Male</div>
+    <div class="item" data-value="0">Female</div>
+  </div>
+</div>
     <div id="controlSection" class="bordered">
-        <div id="pickupLocation" class="float">
-            <!-- <div id=""> -->
-            <label>Pickup Location</label>
-            <!-- </div> -->
-            <!-- <div id="pickupSelect"> -->
-            <select
-                    ng-options="operation.name for operation in operationList"
-                    ng-model="selectedOperation"
-                    ng-change="checkOption()"
-                    class="form-control">
-            </select>
-            <!-- </div> -->
-        </div>
+
 
         <div id="destination" class="float">
             <div class="input-group">
@@ -67,11 +76,11 @@
         </div>
 
         <div id="carType" class="float">
-            <button id="" class="btn btn-default" onclick="compute(0)">UberX</button>
-            <button id="" class="btn btn-default" onclick="compute(1)">UberXL</button>
-            <button id="" class="btn btn-default" onclick="compute(2)">UberBlack</button>
-            <button id="" class="btn btn-default" onclick="compute(3)">UberSUV</button>
-            <button id="" class="btn btn-default" onclick="compute(4)">UberSelect</button>
+            <button id="" class="ui blue button" onclick="compute(0)">UberX</button>
+            <button id="" class="ui button" onclick="compute(1)">UberXL</button>
+            <button id="" class="ui button" onclick="compute(2)">UberBlack</button>
+            <button id="" class="ui button" onclick="compute(3)">UberSUV</button>
+            <button id="" class="ui button" onclick="compute(4)">UberSelect</button>
         </div>
     </div>
 
@@ -102,40 +111,10 @@
 <div id="vis"></div>
 
 <div id="chart"></div>
-<div id="dataset-picker">
+<div id="dataset-picker"></div>
 </div>
 <script src="static/js/heatmap.js"></script>
 <script src="static/js/util.js"></script>
-<script>
-// ng-app="formApp" ng-controller="formController"
-<!-- WE WILL PROCESS OUR FORM HERE -->
-// define angular module/app
-var myApp = angular.module('myApp', []);
 
-// create angular controller and pass in $scope and $http
-function myController($scope) {
-	$scope.operationList = [
-	{
-		name: 'Georgia Tech',
-	  	operation: MyOperations.convolution
-	},
-	{
-		name: 'Place 1',
-	  operation: MyOperations.convolution
-	},
-	{
-		name: 'Place 2',
-	  operation: MyOperations.convolution
-	},
-	{
-		name: 'Place 3',
-	  	operation: MyOperations.convolution
-	}];
-
-	$scope.selectedOperation = $scope.operationList[0];
-
-}
-
-</script>
 </body>
 </html>
