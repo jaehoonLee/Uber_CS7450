@@ -1,7 +1,7 @@
 //var xoption = getXSelectedOption()
 //var yoption = getYSelectedOption()
 // Gets called when the page is loaded.
-var svg_coffee, parseDate, xAxis, yAxis, valueline, x, y, margin_cof, width_cof, height_cof, formatDate, movingWindowAvg, bisectDate, formatValue;
+var svg_coffee, parseDate, xAxis, yAxis, valueline, valueline2, x, y, margin_cof, width_cof, height_cof, formatDate, movingWindowAvg, bisectDate, formatValue;
 var timestamp = [];
 var wait = [];
 var surge = [];
@@ -53,7 +53,15 @@ var check = false;
 
 function updateClicked(data){
 
-	d3.select("#vis").html("")
+
+	//d3.select("#vis").html("")
+	//d3.select("svg").remove();
+	//d3.selectAll("*").remove();
+    d3.select("#vis").html("");
+	timestamp=[];
+	wait = [];
+	surge = [];
+
 
     // Get the data
     data = jQuery.parseJSON(data);
@@ -61,6 +69,7 @@ function updateClicked(data){
 	    d.key = parseDate(d.timestamp);
 	    d.wait = +d.estimated_waiting_time / 60.0;
 	    d.surge = +d.surge_multiplier;
+
 	    wait.push(+d.estimated_waiting_time / 60.0);
 	    surge.push(+d.surge_multiplier);
             timestamp.push(parseDate(d.timestamp));
@@ -79,7 +88,7 @@ function updateClicked(data){
 
 
 	//Adding trendlines
-	var valueline = d3.svg.line()
+	valueline = d3.svg.line()
 	    .interpolate("basis")
 	    .x(function (d, i) {
                 return xscale(timestamp[i]);
@@ -88,7 +97,7 @@ function updateClicked(data){
                 return yscale0(d);
             });
 
-	var valueline2 = d3.svg.line()
+	valueline2 = d3.svg.line()
     	    .interpolate("basis")
 	    .x(function (d, i) {
                 return xscale(timestamp[i]);
@@ -111,10 +120,10 @@ function updateClicked(data){
 	var svg_coffee = d3.select("#vis")
 	    .append("svg:svg")
 	    .call(zoom)
-            .attr("width", width_cof + margin_cof.left + margin_cof.right)
-            .attr("height", height_cof + margin_cof.top + margin_cof.bottom)
+		.attr("width", width_cof + margin_cof.left + margin_cof.right)
+        .attr("height", height_cof + margin_cof.top + margin_cof.bottom)
 	    .append("svg:g")
-            .attr("transform", "translate(" + margin_cof.left + "," + margin_cof.top + ")");
+        .attr("transform", "translate(" + margin_cof.left + "," + margin_cof.top + ")");
 
 	//var xAxis = d3.svg_coffee.axis().scale(xscale).tickSize(-height_cof).tickSubdivide(false);
 	xAxis = d3.svg.axis().scale(xscale);
@@ -125,8 +134,9 @@ function updateClicked(data){
 	var yAxisRight = d3.svg.axis().scale(yscale1)
 	    .orient("left").ticks(5);
 
-	var focus = svg.append("g")
-	.style("display", "none");
+	var focus = svg_coffee.append("g")
+				.style("display", "none");
+
 
 	svg_coffee.append("svg:g")         // Add the X Axis
             .attr("class", "x axis")
@@ -135,24 +145,34 @@ function updateClicked(data){
 
 	svg_coffee.append("svg:g")         // Add the Y Axis
             .attr("class", "y axis axisLeft")
-	    .style("fill", "steelblue")
+	    	.style("fill", "steelblue")
             .call(yAxisLeft);
 
 	svg_coffee.append("svg:g")
-	    .attr("class", "y axis axisRight")
-	    .attr("transform", "translate(" + width_cof + " ,0)")
+	    	.attr("class", "y axis axisRight")
+	    	.attr("transform", "translate(" + width_cof + " ,0)")
             .style("fill", "red")
             .call(yAxisRight);
 
 	svg_coffee.append("svg:path")      // Add the valueline path.
             .attr("d", valueline(wait)).attr("class", "y0")
-	    .attr("id", "line1")
-	    .style("stroke","steelblue")
-	    .style("stroke-opacity","0.3")
+	    	.attr("id", "line1")
+	    	.style("stroke","steelblue")
+	    	.style("stroke-opacity","0.3")
+
 
 	svg_coffee.append("svg:path")      // Add the valueline2 path.
 	    .style("stroke", "red")
             .attr("d", valueline2(surge)).attr("class", "y1");
+
+
+
+	if(check)
+		return
+	else
+		check = true
+
+
 	/*
 	  Adding scatter dots
 	svg_coffee.selectAll("scatter-dots")
@@ -178,6 +198,7 @@ function updateClicked(data){
 	    .attr("cy", valueline(wait))
 	    .attr("r", 4.5);
 	*/
+
 	function zoomed() {
             zoomRight.scale(zoom.scale()).translate(zoom.translate());
             svg_coffee.select(".x.axis").call(xAxis);

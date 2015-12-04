@@ -44,7 +44,7 @@ function updateClicked(data){
     //d3.csv('data/CoffeeData.csv',update)
     //alert("Data: " + data + "\nStatus: " + status);
 
-    d3.select("#vis").html("")
+
 
     svg_coffee = d3.select("#vis")
     .append("svg")
