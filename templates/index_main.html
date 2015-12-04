@@ -5,8 +5,8 @@
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="static/js/coffee.js"></script>
-    <link rel="stylesheet" type="text/css" href="static/semantic/semantic.min.css">
-    <script src="static/semantic/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/semantic/semantic.css">
+    <script src="static/semantic/semantic.js"></script>
 
     <style>
         path {
@@ -51,36 +51,47 @@
     })
   ;
   </script>
-<body onload="init()" ng-app="myApp" ng-controller="myController"> <!-- init() method defined in coffee.js-->
+<body onload="init()" > <!-- init() method defined in coffee.js-->
 <div>
 
 
-<div id="content">
-    <div class="ui selection dropdown">
-  <input type="hidden" name="gender">
-  <i class="dropdown icon"></i>
-  <div class="default text">Gender</div>
-  <div class="menu">
-    <div class="item" data-value="1">Male</div>
-    <div class="item" data-value="0">Female</div>
-  </div>
-</div>
-    <div id="controlSection" class="bordered">
-
-
-        <div id="destination" class="float">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon">Destination</span>
-                <input class="form-control" type="text" ng-model="param.factor" ng-change=""  placeholder="Piedmont Park">
+    <div id="content">
+        <div class="ui text menu">
+        <div class="header item">Pickup Location:</div>
+        <div class="ui selection dropdown" tabindex="0">
+            <input type="hidden" name="selection" value="alpharetta">
+            <i class="dropdown icon"></i>
+            <div class="text">Alpharetta</div>
+            <div class="menu">
+                <div class="item active selected" data-value="1">Alpharetta</div>
+                <div class="item" data-value="2">Buckhead</div>
+                <div class="item" data-value="3">Decatur</div>
+                <div class="item" data-value="4">Georgia Tech</div>
+                <div class="item" data-value="5">Marietta</div>
+                <div class="item" data-value="6">Peachtree City</div>
+                <div class="item" data-value="7">Sandy Springs</div>
+                <div class="item" data-value="8 ">Stone Mountain</div>
+            </div>
+        </div>
+            <div class="header item" id="basic-addon">Destination:</div>
+            <div id="destination" class="float">
+                <div class="ui input">
+                    <input type="text"  placeholder="Piedmont Park">
+                </div>
             </div>
         </div>
 
+
+        <div id="controlSection" class="bordered">
+
+
+
         <div id="carType" class="float">
-            <button id="" class="ui blue button" onclick="compute(0)">UberX</button>
-            <button id="" class="ui button" onclick="compute(1)">UberXL</button>
-            <button id="" class="ui button" onclick="compute(2)">UberBlack</button>
-            <button id="" class="ui button" onclick="compute(3)">UberSUV</button>
-            <button id="" class="ui button" onclick="compute(4)">UberSelect</button>
+            <button id="car0" class="ui active button" onclick="compute(0)">UberX</button>
+            <button id="car1" class="ui button" onclick="compute(1)">UberXL</button>
+            <button id="car2" class="ui button" onclick="compute(2)">UberBlack</button>
+            <button id="car3" class="ui button" onclick="compute(3)">UberSUV</button>
+            <button id="car4" class="ui button" onclick="compute(4)">UberSelect</button>
         </div>
     </div>
 

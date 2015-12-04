@@ -19,6 +19,16 @@ $("button").click(function(){
 });
     */
 function compute(type){
+
+    for(var i = 0; i < 5; i++){
+
+        if(i == type){
+            $("#car" + i).attr('class', 'ui button active');
+        }
+        else
+            $("#car" + i).attr('class', 'ui button');
+    }
+
     console.log("H");
     $.post("/request_data/",
     {
