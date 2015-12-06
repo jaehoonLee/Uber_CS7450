@@ -50,6 +50,8 @@ def request_data(request):
 
     for uber in ubers:
         result = {}
+
+
         for i in uber._meta.fields:
             if isinstance(getattr(uber, i.name), datetime):
                 result[i.name] = getattr(uber, i.name).strftime('%Y-%m-%d %H:%M')
@@ -58,11 +60,18 @@ def request_data(request):
                 result[i.name] = getattr(uber, i.name)
 
             #print getattr(uber, i.name)
+        '''
+        print uber.timestamp.strftime('%Y-%m-%d %H:%M')
+        result['timestamp'] = uber.timestamp.strftime('%Y-%m-%d %H:%M')
+        '''
         results.append(result)
 
+    #parsed = json.loads(results)
     data = simplejson.dumps(results, indent=4, sort_keys=True)
 
-    return HttpResponse(data)
+
+    return HttpResponse(data, content_type='application/json')
+
 
 
 def save_data(request):

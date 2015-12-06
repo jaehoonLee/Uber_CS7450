@@ -18,28 +18,6 @@ $("button").click(function(){
     });
 });
     */
-function compute(type){
 
-    for(var i = 0; i < 5; i++){
 
-        if(i == type){
-            $("#car" + i).attr('class', 'ui button active');
-        }
-        else
-            $("#car" + i).attr('class', 'ui button');
-    }
 
-    console.log("H");
-    $.post("/request_data/",
-    {
-        start_pos: "0",
-        car_type: type,
-        start_time: "2015-10-26",
-        end_time: "2015-11-02"
-    },
-    function(data, status){
-        updateClicked(data);
-        updateHeatmap(data);
-    });
-
-}

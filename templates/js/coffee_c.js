@@ -5,6 +5,8 @@ var svg_coffee, parseDate, xAxis, yAxis, valueline, valueline2, x, y, margin_cof
 var timestamp = [];
 var wait = [];
 var surge = [];
+
+
 function init(){
     /*Data */
 
@@ -18,16 +20,16 @@ function init(){
     formatCurrency = function(d) { return "x" + formatValue(d); };
 
     formatDate = d3.time.format("%H:%M")
-    
+
     movingWindowAvg = function (arr, step) {// Window size = 2 * step + 1
-	return arr.map(function (_, idx) { 
-            var wnd = arr.slice(idx - step, idx + step + 1); 
+	return arr.map(function (_, idx) {
+            var wnd = arr.slice(idx - step, idx + step + 1);
             var result = d3.sum(wnd) / wnd.length;
-	    
+
             // Check for isNaN, the javascript way
             result = (result == result) ? result : _;
-	    
-            return result; 
+
+            return result;
 	});
     };
 
@@ -35,21 +37,23 @@ function init(){
     // Get the data
     $.post("/request_data/",
  	   {
-        start_pos: "0",
+        start_pos: "1",
         car_type: "0",
-        start_time: "2015-10-27",
+        start_time: "2015-10-26",
         end_time: "2015-11-02"
     },
     function(data, status){
+		console.log(data);
         updateClicked(data);
+		data.forEach(function(d) {
+	    	console.log(d);
+		});
 
     });
 
 
 }
 
-
-var check = false;
 
 function updateClicked(data){
 
@@ -64,7 +68,7 @@ function updateClicked(data){
 
 
     // Get the data
-    data = jQuery.parseJSON(data);
+    //data = jQuery.parseJSON(data);
 	data.forEach(function(d) {
 	    d.key = parseDate(d.timestamp);
 	    d.wait = +d.estimated_waiting_time / 60.0;
@@ -165,12 +169,6 @@ function updateClicked(data){
 	    .style("stroke", "red")
             .attr("d", valueline2(surge)).attr("class", "y1");
 
-
-
-	if(check)
-		return
-	else
-		check = true
 
 
 	/*
@@ -371,6 +369,8 @@ function updateClicked(data){
 
 	}
 }
+
+
 
 /*
 //Called when the update button is clicked

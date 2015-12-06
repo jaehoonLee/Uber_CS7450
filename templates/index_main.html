@@ -1,12 +1,13 @@
-<html >
+<html>
 <head>
     <meta charset="UTF-8">
     <title>CoffeeVis</title>
     <script src="//d3js.org/d3.v3.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="static/jquery.min.js"></script>
+
     <script src="static/js/coffee_c.js"></script>
-    <link rel="stylesheet" type="text/css" href="static/semantic/semantic.css">
-    <script src="static/semantic/semantic.js"></script>
+        <link rel="stylesheet" type="text/css" href="static/semantic/semantic.css">
+   <script src="static/semantic/semantic.js"></script>
 
     <style>
         path {
@@ -41,17 +42,65 @@
         }
     </style>
 </head>
+
 <script>
-  $(document)
-    .ready(function() {
-      $('.ui.selection.dropdown').dropdown();
-      $('.ui.menu .ui.dropdown').dropdown({
-        on: 'hover'
-      });
-    })
-  ;
-  </script>
+    var global_type = 0;
+    function compute(type){
+        global_type = type;
+        for(var i = 0; i < 5; i++){
+
+            if(i == type){
+                $("#car" + i).attr('class', 'ui button active');
+            }
+            else
+                $("#car" + i).attr('class', 'ui button');
+        }
+
+        console.log("H");
+        $.post("/request_data/",
+                {
+                    start_pos: "0",
+                    car_type: type,
+                    start_time: "2015-10-26",
+                    end_time: "2015-11-02"
+                },
+                function(data, status){
+                    updateClicked(data);
+                    updateHeatmap(data);
+                });
+
+    }
+    $(document)
+            .ready(function() {
+                $('.ui.selection.dropdown').dropdown();
+                $('.ui.menu .ui.dropdown').dropdown({
+                    on: 'hover',
+                    action: function(text, value){
+                        //Start Position: (0 = Apharetta, 1 = Buckhead, 2 = Decatur, 3 = GT, 4 = Marietta, 5 = Peachtree, 6 = Sandy, 7 = Stone Mountain)
+                        console.log(text + ":" + value);
+
+                        $.post("/request_data/",
+                                {
+                                    start_pos: value-1,
+                                    car_type: global_type,
+                                    start_time: "2015-10-26",
+                                    end_time: "2015-11-02"
+                                },
+                                function(data, status){
+                                    updateClicked(data);
+                                    updateHeatmap(data);
+                                });
+
+                    }
+                });
+            })
+
+
+    ;
+</script>
+
 <body onload="init()" > <!-- init() method defined in coffee.js-->
+
 <div>
 
 
@@ -73,7 +122,7 @@
                 <div class="item" data-value="8 ">Stone Mountain</div>
             </div>
         </div>
-            <div class="header item" id="basic-addon">Destination:</div>
+            <div class="header item" id="basic-addon">Destination: </div>
             <div id="destination" class="float">
                 <div class="ui input">
                     <input type="text"  placeholder="Piedmont Park">
@@ -128,4 +177,5 @@
 <script src="static/js/util.js"></script>
 
 </body>
+
 </html>

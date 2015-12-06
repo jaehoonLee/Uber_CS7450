@@ -7,7 +7,9 @@ var margin = { top: 50, right: 0, bottom: 100, left: 30 },
     gridSize = Math.floor(width / 24),
     legendElementWidth = gridSize*2,
     buckets = 9,
-    colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"], // alternatively colorbrewer.YlGnBu[9]
+    //colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"], // alternatively colorbrewer.YlGnBu[9]
+    colors = ["#AED7E5","#519FCD","#2C8BC4","#3172DA","#0F5DD8","#097CC0","#0745A8","#063682","#044871"], // alternatively colorbrewer.YlGnBu[9]
+
     days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
     times = ["1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12a", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p", "12p"];
 datasets = ["data.tsv", "data2.tsv"];
@@ -54,8 +56,11 @@ var timeLabels = svg.selectAll(".timeLabel")
 
 function updateHeatmap(data)
 {
-    data = jQuery.parseJSON(data);
+   // data = jQuery.parseJSON(data);
         data.forEach(function(d) {
+
+            console.log(d.timestamp);
+
             var parseDate = d3.time.format("%Y-%m-%d %H:%M").parse;
             d.key = parseDate(d.timestamp);
             d.day = d.key.getDay() + 1;
