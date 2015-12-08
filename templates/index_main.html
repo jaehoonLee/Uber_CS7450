@@ -1,13 +1,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>CoffeeVis</title>
-    <script src="//d3js.org/d3.v3.min.js"></script>
+    <title>Uber Analytic System</title>
+    <script src="static/d3.min.js"></script>
     <script src="static/jquery.min.js"></script>
+    <script src="static/js/topojson.js"></script>
+    <script src="static/js/datamaps.all.min.js"></script>
+    <!--
+
+    <script src="static/js/datamaps.usa.min.js"></script>
+    -->
 
     <script src="static/js/coffee_c.js"></script>
-        <link rel="stylesheet" type="text/css" href="static/semantic/semantic.css">
-   <script src="static/semantic/semantic.js"></script>
+    <script src="static/js/price.js"></script>
+    <script src="static/js/time.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/semantic/semantic.css">
+    <script src="static/semantic/semantic.js"></script>
 
     <style>
         path {
@@ -40,11 +48,23 @@
         text.axis-worktime {
             fill: #000;
         }
+
+        .main{
+            width:100%;
+        }
+
+        .mainview{
+            margin : 20px;
+        }
+        #content{
+            margin-left:20px;
+        }
     </style>
 </head>
 
 <script>
     var global_type = 0;
+    var global_start_pos = 0;
     function compute(type){
         global_type = type;
         for(var i = 0; i < 5; i++){
@@ -59,7 +79,7 @@
         console.log("H");
         $.post("/request_data/",
                 {
-                    start_pos: "0",
+                    start_pos: global_start_pos,
                     car_type: type,
                     start_time: "2015-10-26",
                     end_time: "2015-11-02"
@@ -67,6 +87,8 @@
                 function(data, status){
                     updateClicked(data);
                     updateHeatmap(data);
+                    update_price(data);
+                    update_time(data);
                 });
 
     }
@@ -77,6 +99,17 @@
                     on: 'hover',
                     action: function(text, value){
                         //Start Position: (0 = Apharetta, 1 = Buckhead, 2 = Decatur, 3 = GT, 4 = Marietta, 5 = Peachtree, 6 = Sandy, 7 = Stone Mountain)
+                        global_start_pos = value - 1;
+                        $(".startpos").html(text);
+                        for(var i = 0; i < 8; i++){
+
+                            if(i == value){
+                                $("#startpos" + i).attr('class', 'item active selected');
+                            }
+                            else
+                                $("#startpos" + i).attr('class', 'item');
+                        }
+
                         console.log(text + ":" + value);
 
                         $.post("/request_data/",
@@ -89,93 +122,476 @@
                                 function(data, status){
                                     updateClicked(data);
                                     updateHeatmap(data);
+                                    update_price(data);
+                                    update_time(data);
                                 });
 
                     }
                 });
-            })
+            });
 
 
-    ;
+
 </script>
 
-<body onload="init()" > <!-- init() method defined in coffee.js-->
+<body> <!-- init() method defined in coffee.js-->
 
-<div>
+<div class="main">
 
+    <div class="mainview">
 
-    <div id="content">
-        <div class="ui text menu">
-        <div class="header item">Pickup Location:</div>
-        <div class="ui selection dropdown" tabindex="0">
-            <input type="hidden" name="selection" value="alpharetta">
-            <i class="dropdown icon"></i>
-            <div class="text">Alpharetta</div>
-            <div class="menu">
-                <div class="item active selected" data-value="1">Alpharetta</div>
-                <div class="item" data-value="2">Buckhead</div>
-                <div class="item" data-value="3">Decatur</div>
-                <div class="item" data-value="4">Georgia Tech</div>
-                <div class="item" data-value="5">Marietta</div>
-                <div class="item" data-value="6">Peachtree City</div>
-                <div class="item" data-value="7">Sandy Springs</div>
-                <div class="item" data-value="8 ">Stone Mountain</div>
-            </div>
+        <div class="ui huge header ">Uber suck!</div>
+
+        <div class="ui top attached tabular menu">
+            <a class="active item" data-tab="first">Customer</a>
+            <a class="item" data-tab="second">Manager</a>
+            <a class="item" data-tab="third">Driver</a>
         </div>
-            <div class="header item" id="basic-addon">Destination: </div>
-            <div id="destination" class="float">
-                <div class="ui input">
-                    <input type="text"  placeholder="Piedmont Park">
+        <div class="ui bottom attached active tab segment" data-tab="first">
+            <div id="content">
+                <div class="ui text menu" >
+                    <div class="header item">Pickup Location:</div>
+                    <div class="ui selection dropdown" tabindex="0">
+                        <input type="hidden" name="selection" value="alpharetta">
+                        <i class="dropdown icon"></i>
+                        <div class="startpos text">Alpharetta</div>
+                        <div class="menu">
+                            <div class="item active selected" id="startpos1" data-value="1">Alpharetta</div>
+                            <div class="item" id="startpos2" data-value="2">Buckhead</div>
+                            <div class="item" id="startpos3" data-value="3">Decatur</div>
+                            <div class="item" id="startpos4" data-value="4">Georgia Tech</div>
+                            <div class="item" id="startpos5" data-value="5">Marietta</div>
+                            <div class="item" id="startpos6" data-value="6">Peachtree City</div>
+                            <div class="item" id="startpos7" data-value="7">Sandy Springs</div>
+                            <div class="item" id="startpos8" data-value="8 ">Stone Mountain</div>
+                        </div>
+                    </div>
+                    <div class="header item" id="basic-addon">Destination: </div>
+                    <div id="destination" class="float">
+                        <div class="ui input">
+                            <input  type="text"  placeholder="Piedmont Park" value="Piedmont Park" readonly >
+                        </div>
+                    </div>
                 </div>
+
+
+                <div id="controlSection" class="bordered">
+
+
+
+                    <div id="carType" class="float">
+                        <button id="car0" class="ui active button" onclick="compute(0)">UberX</button>
+                        <button id="car1" class="ui button" onclick="compute(1)">UberXL</button>
+                        <button id="car2" class="ui button" onclick="compute(2)">UberBlack</button>
+                        <button id="car3" class="ui button" onclick="compute(3)">UberSUV</button>
+                        <button id="car4" class="ui button" onclick="compute(4)">UberSelect</button>
+                    </div>
+                </div>
+
+            </div>
+            </br>
+            <div class="ui horizontal divider" style="width:960px; margin-left:22px;"> Trip Price  </div>
+            <div id="price">
+
+            </div>
+            </br>
+            <div class="ui horizontal divider" style="width:960px; margin-left:22px;"> Total Trip time </div>
+            <div id="time">
+
+            </div>
+
+
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="second">
+            <div id="content">
+                <div class="ui text menu" >
+                    <div class="header item">Pickup Location:</div>
+                    <div class="ui selection dropdown" tabindex="0">
+                        <input type="hidden" name="selection" value="alpharetta">
+                        <i class="dropdown icon"></i>
+                        <div class="startpos text">Alpharetta</div>
+                        <div class="menu">
+                            <div class="item active selected" id="startpos1" data-value="1">Alpharetta</div>
+                            <div class="item" id="startpos2" data-value="2">Buckhead</div>
+                            <div class="item" id="startpos3" data-value="3">Decatur</div>
+                            <div class="item" id="startpos4" data-value="4">Georgia Tech</div>
+                            <div class="item" id="startpos5" data-value="5">Marietta</div>
+                            <div class="item" id="startpos6" data-value="6">Peachtree City</div>
+                            <div class="item" id="startpos7" data-value="7">Sandy Springs</div>
+                            <div class="item" id="startpos8" data-value="8 ">Stone Mountain</div>
+                        </div>
+                    </div>
+                    <div class="header item" id="basic-addon">Destination: </div>
+                    <div id="destination" class="float">
+                        <div class="ui input">
+                            <input  type="text"  placeholder="Piedmont Park" value="Piedmont Park" readonly >
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="controlSection" class="bordered">
+
+
+
+                    <div id="carType" class="float">
+                        <button id="car0" class="ui active button" onclick="compute(0)">UberX</button>
+                        <button id="car1" class="ui button" onclick="compute(1)">UberXL</button>
+                        <button id="car2" class="ui button" onclick="compute(2)">UberBlack</button>
+                        <button id="car3" class="ui button" onclick="compute(3)">UberSUV</button>
+                        <button id="car4" class="ui button" onclick="compute(4)">UberSelect</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="infovis" class="bordered">
+                <div id="infovis1" class="bordered"></div>
+                <div id="infovis2" class="bordered"></div>
+            </div>
+            </br>
+            <div class="ui horizontal divider" style="width:960px; margin-left:22px;"> Est. Waiting Time and Surge Multiplier  </div>
+            <div id="vis"></div>
+            </br>
+            </br>
+            <div class="ui horizontal divider" style="width:960px; margin-left:22px;"> Surge Multiplier By Time </div>
+            <div id="chart"></div>
+            <div id="dataset-picker"></div>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="third">
+            <div id="content">
+                <div class="ui text menu" >
+                    <div class="header item">Pickup Location:</div>
+                    <div class="ui selection dropdown" tabindex="0">
+                        <input type="hidden" name="selection" value="alpharetta">
+                        <i class="dropdown icon"></i>
+                        <div class="startpos text">Alpharetta</div>
+                        <div class="menu">
+                            <div class="item active selected" id="startpos1" data-value="1">Alpharetta</div>
+                            <div class="item" id="startpos2" data-value="2">Buckhead</div>
+                            <div class="item" id="startpos3" data-value="3">Decatur</div>
+                            <div class="item" id="startpos4" data-value="4">Georgia Tech</div>
+                            <div class="item" id="startpos5" data-value="5">Marietta</div>
+                            <div class="item" id="startpos6" data-value="6">Peachtree City</div>
+                            <div class="item" id="startpos7" data-value="7">Sandy Springs</div>
+                            <div class="item" id="startpos8" data-value="8 ">Stone Mountain</div>
+                        </div>
+                    </div>
+                    <div class="header item" id="basic-addon">Destination: </div>
+                    <div id="destination" class="float">
+                        <div class="ui input">
+                            <input  type="text"  placeholder="Piedmont Park" value="Piedmont Park" readonly >
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="controlSection" class="bordered">
+
+
+
+                    <div id="carType" class="float">
+                        <button id="car0" class="ui active button" onclick="compute(0)">UberX</button>
+                        <button id="car1" class="ui button" onclick="compute(1)">UberXL</button>
+                        <button id="car2" class="ui button" onclick="compute(2)">UberBlack</button>
+                        <button id="car3" class="ui button" onclick="compute(3)">UberSUV</button>
+                        <button id="car4" class="ui button" onclick="compute(4)">UberSelect</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="content3">
+                </br>
+                <div class="ui horizontal divider" style="width:960px; margin-left:22px;"> Surge Multiplier By Time </div>
+                <div id="chart2"></div>
+
+                <div class="ui horizontal divider" style="width:960px; margin-left:22px;"> Surge Multiplier By Location </div>
+                </br>
+                <div style="position: relative; width: 965px; height: 600px; margin-left:25px;">
+                    <div id="container" style="position: absolute; top:0px; right:0px; width: 965px; height: 600px; margin-left:25px;"></div>
+                    <div id="buckhead_con" style="position: absolute; top:0px; right:0px; width: 965px; height: 600px; margin-left:25px;"></div>
+                </div>
+
             </div>
         </div>
 
 
-        <div id="controlSection" class="bordered">
-
-
-
-        <div id="carType" class="float">
-            <button id="car0" class="ui active button" onclick="compute(0)">UberX</button>
-            <button id="car1" class="ui button" onclick="compute(1)">UberXL</button>
-            <button id="car2" class="ui button" onclick="compute(2)">UberBlack</button>
-            <button id="car3" class="ui button" onclick="compute(3)">UberSUV</button>
-            <button id="car4" class="ui button" onclick="compute(4)">UberSelect</button>
-        </div>
     </div>
-
-    <div id="infovis" class="bordered">
-        <div id="infovis1" class="bordered"></div>
-        <div id="infovis2" class="bordered"></div>
-    </div>
-</div>
-
-
-<div style="margin:30;">
-    <div style="display: table-cell; width: 120;">
-        <label for="xdropdown">X: </label><select id="xdropdown">
-        <option val="timestamp">time</option>
-    </select>
-    </div>
-    <div style="display: table-cell; width: 190;">
-        <label for="ydropdown">Y: </label><select id="ydropdown">
-        <option val="surge_multiplier">surge multiplier</option>
-        <option val="estimated_waiting_time">estimated waiting time</option>
-    </select>
-    </div>
-    <div style="display: table-cell; width: 150;">
-        <button id="update" onclick="updateClicked()">Update</button>
-    </div>
-</div>
-
-<div id="vis"></div>
-
-<div id="chart"></div>
-<div id="dataset-picker"></div>
 </div>
 <script src="static/js/heatmap.js"></script>
+<script src="static/js/mapview.js"></script>
 <script src="static/js/util.js"></script>
+<script>
 
+    var initMap = false
+    var radius_of_city = 10;
+    var global_data = 0;
+    var map;
+    $('.menu .item').tab({
+        onLoad:function(tabPath, parameterArray, historyEvent){
+            if(tabPath == 'third'){
+                if(!initMap){
+
+                    colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]; // alternatively colorbrewer.YlGnBu[9]
+
+                    map = new Datamap({
+                        element: document.getElementById('buckhead_con'),
+                        geographyConfig: {
+                            dataUrl: '/static/js/hsa.json'
+                        },
+                        scope: 'hsa',
+                        fills: {
+                            defaultFill: '#bada55',
+                            someKey: '#fa0fa0'
+                        },
+                        data: {
+                            'AFG-1758': {fillKey: 'someKey'},
+                            'AFG-1747': {fillKey: 'someKey'}
+                        },
+                        setProjection: function(element) {
+                            var projection = d3.geo.mercator()
+                                    .center([-84.566667, 33.684]) //60.48677779100012,29.38660532600005
+                                //[-85.606675,30.356734]
+                                    .scale(34000)
+                                    .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+
+                            var path = d3.geo.path().projection(projection);
+                            return {path: path, projection: projection};
+                        },
+                        fills: {
+                            defaultFill: '#ABDDA4',
+                            Alpharetta: colors[0],
+                            Buckhead: colors[1],
+                            Decatur: colors[2],
+                            GT: colors[3],
+                            Marietta: colors[4],
+                            Peachtree: colors[5],
+                            Sandy: colors[6],
+                            Stone: colors[7],
+                            Piedmont: colors[8]
+                        }
+                    });
+
+                    console.log(map);
+
+
+                    var loc = ['Alpharetta', 'Buckhead', 'Decatur', 'Georgia Tech', 'Marietta', 'Peachtree City',  'Sandy Springs', 'Stone Mountain', 'Piedmont Park']
+                    var chartWidth = 965;
+
+                    var legendWidth  = 220,
+                      legendHeight = 60;
+
+                    var legend = map.svg.append('g')
+                            .attr('class', 'legend')
+                            .attr('transform', 'translate(0, 0)');
+
+                    legend.append('rect')
+                            .attr('class', 'legend-bg')
+                            .attr('width',  legendWidth)
+                            .style('fill', 'transparent')
+                            .attr('height', legendHeight);
+
+                    for(var i = 0; i < 8; i++)
+                    {
+                        legend.append('circle')
+                            .style('fill', colors[i])
+                            .attr('r',  10)
+                            .attr('cx', 20)
+                            .attr('cy', 20 + i * 25);
+
+                        legend.append('text')
+                            .attr('x', 40)
+                            .attr('y', 23 + i * 25)
+                            .text(loc[i]);
+                    }
+
+
+
+                    /*
+                     var map = new Datamap({
+                     element: document.getElementById('container'),
+                     geographyConfig: {
+                     highlightOnHover: false
+
+                     },
+                     scope: 'usa',
+                     setProjection: function(element) {
+                     var projection = d3.geo.equirectangular()
+                     //.center([42, 43.3])
+                     //.center([80, 31])
+                     .center([-83.8, 34.2])
+                     //.rotate([2, 4.4])
+                     .scale(20000)
+                     //.translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+                     var path = d3.geo.path()
+                     .projection(projection);
+
+                     return {path: path, projection: projection};
+                     },
+                     fills: {
+                     defaultFill: "#ABDDA4",
+                     gt: "#CCCCCC",
+                     sandy: "#CCCCCC",
+                     buckhead: "#CCCCCC",
+                     marietta: "#CCCCCC",
+                     decatur: "#CCCCCC",
+                     alpharetta: "#CCCCCC",
+                     peachtree: "#CCCCCC",
+                     stone: "#CCCCCC",
+                     piedmont: "#CCCCCC"
+                     },
+                     data: {
+                     'ZAF': { fillKey: 'gt50' }
+                     }
+                     });
+
+
+                     map.bubbles([
+                     {name: 'georgia tech', latitude: 33.775618, longitude: -84.396285, radius: radius_of_city, fillKey: 'gt'},
+                     {name: 'sandy', latitude: 33.9375, longitude: -84.3686, radius: radius_of_city, fillKey: 'sandy'},
+                     {name: 'buckhead', latitude: 33.8394, longitude: -84.3799, radius: radius_of_city, fillKey: 'buckhead'},
+                     {name: 'marietta', latitude: 33.9533, longitude: -84.5406, radius: radius_of_city, fillKey: 'marietta'},
+                     {name: 'decatur', latitude: 33.7714, longitude: -84.2978, radius: radius_of_city, fillKey: 'decatur'},
+                     {name: 'alpharetta', latitude: 34.0733, longitude: -84.2811, radius: radius_of_city, fillKey: 'alpharetta'},
+                     {name: 'peachtree', latitude: 33.3990, longitude: -84.5706, radius: radius_of_city, fillKey: 'peachtree'},
+                     {name: 'stone', latitude: 33.8053, longitude: -84.1714, radius: radius_of_city, fillKey: 'stone'},
+                     {name: 'piedmont', latitude: 33.783768, longitude: -84.371889, radius: radius_of_city, fillKey: 'piedmont'}
+
+
+                     ], {
+                     popupTemplate: function(geo, data) {
+                     return "<div class='hoverinfo'>" + data.name + "";
+                     }
+                     });
+
+                     var buckhead_con = new Datamap({
+                     element: document.getElementById('buckhead_con'),
+                     scope: 'custom',
+                     geographyConfig: {
+                     dataUrl: '/static/js/GA.geo.json'
+                     },
+
+                     setProjection: function(element) {
+                     var projection, path;
+                     projection = d3.geo.equirectangular()
+                     .center([-82.900075, 32.165622])
+                     .scale(element.offsetWidth)
+                     .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+                     path = d3.geo.path()
+                     .projection( projection );
+
+                     return {path: path, projection: projection};
+                     }
+                     });*/
+                    initMap = true;
+
+                }
+                draw_map([10,10,10,10,10,10,10,10]);
+            }
+
+        }
+    });
+
+
+    $.post("/request_data/",
+    {
+        start_pos: "0",
+        car_type: "0",
+        start_time: "2015-10-26",
+        end_time: "2015-11-02"
+    },
+    function(data, status){
+        init();
+
+        updateClicked(data);
+        updateHeatmap(data);
+        update_price(data);
+        update_time(data);
+
+    });
+    loc = ['gt', 'sandy', 'buckhead', 'marietta', 'decatur', 'alpharetta',  'peachtree', 'stone', 'piedmont']
+
+
+    function draw_map(default_radius){
+        console.log(default_radius);
+        map.bubbles([
+            {
+                name: 'Alpharetta',
+                radius: default_radius[0],
+                fillKey: 'Alpharetta',
+                latitude: 34.0733,
+                longitude: -84.2811
+
+            },{
+                name: 'Buckhead',
+                radius: default_radius[1],
+                fillKey: 'Buckhead',
+                latitude: 33.8394,
+                longitude: -84.3799
+
+            },{
+                name: 'Decatur',
+                radius: default_radius[2],
+                fillKey: 'Decatur',
+                latitude: 33.7714,
+                longitude: -84.2978
+
+            },{
+                name: 'Georgia Tech',
+                radius: default_radius[3],
+                fillKey: 'GT',
+                latitude: 33.775618,
+                longitude: -84.396285
+
+            },{
+                name: 'Marietta',
+                radius: default_radius[4],
+                fillKey: 'Marietta',
+                latitude: 33.9533,
+                longitude: -84.5406
+            },{
+                name: 'Peachtree City',
+                radius: default_radius[5],
+                fillKey: 'Peachtree',
+                latitude: 33.3990,
+                longitude: -84.5706
+
+            },{
+                name: 'Sandy Springs',
+                radius: default_radius[6],
+                fillKey: 'Sandy',
+                latitude: 33.9375,
+                longitude: -84.3686
+
+
+            },{
+                name: 'Stone Mountain',
+                radius: default_radius[7],
+                fillKey: 'Stone',
+                latitude: 33.8053,
+                longitude: -84.1714
+            },{
+                name: 'Piedmont Park',
+                radius: default_radius[0],
+                fillKey: 'Piedmont',
+                latitude:33.783768,
+                longitude: -84.371889
+            }
+
+
+        ], {
+            popupTemplate: function(geo, data) {
+                return '<div class="hoverinfo">' + data.name + '</div>'
+            }
+        });
+
+    }
+
+
+
+</script>
 </body>
 
 </html>

@@ -23,7 +23,14 @@ urlpatterns = [
     url(r'^$', main),
     url(r'^save_data$', save_data),
     url(r'^save_data2$', save_data2),
+    url(r'^save_data3$', save_data3),
+    url(r'^save_data5$', save_data5),
+    url(r'^update_data$', update_data),
     url(r'^request_data', request_data),
+    url(r'^filter_data', filter_data),
+    url(r'^filter', filter),
+    url(r'^request_start_pos_data', request_start_pos_data),
+
 
 
 ]

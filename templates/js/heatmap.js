@@ -2,7 +2,7 @@
  * Created by jaehoonlee88 on 15. 11. 23..
  */
 var margin = { top: 50, right: 0, bottom: 100, left: 30 },
-    width = 960 - margin.left - margin.right,
+    width = 1000 - 35,
     height = 430 - margin.top - margin.bottom,
     gridSize = Math.floor(width / 24),
     legendElementWidth = gridSize*2,
@@ -14,13 +14,19 @@ var margin = { top: 50, right: 0, bottom: 100, left: 30 },
     times = ["1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12a", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p", "12p"];
 datasets = ["data.tsv", "data2.tsv"];
 
-var svg = d3.select("#chart").append("svg")
+var svg_1 = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var dayLabels = svg.selectAll(".dayLabel")
+var svg_2 = d3.select("#chart2").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var dayLabels_1 = svg_1.selectAll(".dayLabel")
     .data(days)
     .enter().append("text")
     .text(function (d) { return d; })
@@ -30,7 +36,17 @@ var dayLabels = svg.selectAll(".dayLabel")
     .attr("transform", "translate(-6," + gridSize / 1.5 + ")")
     .attr("class", function (d, i) { return ((i >= 0 && i <= 4) ? "dayLabel mono axis axis-workweek" : "dayLabel mono axis"); });
 
-var timeLabels = svg.selectAll(".timeLabel")
+var dayLabels_2 = svg_2.selectAll(".dayLabel")
+    .data(days)
+    .enter().append("text")
+    .text(function (d) { return d; })
+    .attr("x", 0)
+    .attr("y", function (d, i) { return i * gridSize; })
+    .style("text-anchor", "end")
+    .attr("transform", "translate(-6," + gridSize / 1.5 + ")")
+    .attr("class", function (d, i) { return ((i >= 0 && i <= 4) ? "dayLabel mono axis axis-workweek" : "dayLabel mono axis"); });
+
+var timeLabels_1 = svg_1.selectAll(".timeLabel")
     .data(times)
     .enter().append("text")
     .text(function(d) { return d; })
@@ -40,30 +56,30 @@ var timeLabels = svg.selectAll(".timeLabel")
     .attr("transform", "translate(" + gridSize / 2 + ", -6)")
     .attr("class", function(d, i) { return ((i >= 7 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"); });
 
-    $.post("/request_data/",
-    {
-        start_pos: "0",
-        car_type: "0",
-        start_time: "2015-10-26",
-        end_time: "2015-11-02"
-    },
-    function(data, status){
+var timeLabels_2 = svg_2.selectAll(".timeLabel")
+    .data(times)
+    .enter().append("text")
+    .text(function(d) { return d; })
+    .attr("x", function(d, i) { return i * gridSize; })
+    .attr("y", 0)
+    .style("text-anchor", "middle")
+    .attr("transform", "translate(" + gridSize / 2 + ", -6)")
+    .attr("class", function(d, i) { return ((i >= 7 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"); });
 
-        updateHeatmap(data);
-
-    // console.log(data);
-    });
 
 function updateHeatmap(data)
 {
-   // data = jQuery.parseJSON(data);
-        data.forEach(function(d) {
 
-            console.log(d.timestamp);
+        data.forEach(function(d) {
 
             var parseDate = d3.time.format("%Y-%m-%d %H:%M").parse;
             d.key = parseDate(d.timestamp);
-            d.day = d.key.getDay() + 1;
+
+            if(d.key.getDay() == 0){
+                d.day = 7;
+            }
+            else
+                d.day = d.key.getDay();
             d.hour = d.key.getHours() + 1;
             //console.log(d.key);
             //d.value = +d.estimated_waiting_time;
@@ -76,7 +92,7 @@ function updateHeatmap(data)
         //make new data
         var newdata = [];
         for(var i = 1; i<=7 ; i++){
-            str = '';
+            var str = '';
             for(var j = 1; j<=24 ; j++) {
 
                 var days = data.filter(function(el){
@@ -103,17 +119,20 @@ function updateHeatmap(data)
         data = newdata;
 
 
-
-        var colorScale = d3.scale.quantile()
+        var legend_height_offset = 12;
+        //==================  SVG1  ====================
+        var colorScale1 = d3.scale.quantile()
             .domain([1.0, 1.4])
             .range(colors);
 
-        var cards = svg.selectAll(".hour")
+
+        var cards1 = svg_1.selectAll(".hour")
             .data(data, function(d) {return d.day+':'+d.hour;});
 
-        cards.append("title");
 
-        cards.enter().append("rect")
+        cards1.append("title");
+
+        cards1.enter().append("rect")
             .attr("x", function(d) { return (d.hour - 1) * gridSize; })
             .attr("y", function(d) { return (d.day - 1) * gridSize; })
             .attr("rx", 4)
@@ -123,38 +142,140 @@ function updateHeatmap(data)
             .attr("height", gridSize)
             .style("fill", colors[0]);
 
-        cards.transition().duration(1000)
-            .style("fill", function(d) { return colorScale(d.value); });
+        cards1.transition().duration(1000)
+            .style("fill", function(d) { return colorScale1(d.value); });
 
-        cards.select("title").text(function(d) { return d.value; });
+        cards1.select("title").text(function(d) { return d.value; });
 
-        cards.exit().remove();
+        cards1.exit().remove();
 
-        var legend = svg.selectAll(".legend")
-            .data([0].concat(colorScale.quantiles()), function(d) {
+        var legend1 = svg_1.selectAll(".legend")
+            .data([0].concat(colorScale1.quantiles()), function(d) {
 
-                console.log(d);
                 return d; });
 
-        legend.enter().append("g")
+        legend1.enter().append("g")
             .attr("class", "legend");
 
-        legend.append("rect")
+        legend1.append("rect")
             .attr("x", function(d, i) { return legendElementWidth * i; })
-            .attr("y", height)
+            .attr("y", height + legend_height_offset)
             .attr("width", legendElementWidth)
             .attr("height", gridSize / 2)
             .style("fill", function(d, i) { return colors[i]; });
 
-        legend.append("text")
+        legend1.append("text")
             .attr("class", "mono")
             .text(function(d) { return "≥ " + d.toFixed(2); })
             .attr("x", function(d, i) { return legendElementWidth * i; })
-            .attr("y", height + gridSize);
+            .attr("y", height + gridSize + legend_height_offset);
 
-        legend.exit().remove();
-
-
+        legend1.exit().remove();
 
 
+        //==================  SVG2  ====================
+
+        var colorScale2 = d3.scale.quantile()
+            .domain([1.0, 1.4])
+            .range(colors);
+
+        var cards2 = svg_2.selectAll(".hour")
+            .data(data, function(d) {return d.day+':'+d.hour;});
+
+
+        cards2.append("title");
+
+        cards2.enter().append("rect")
+            .attr("x", function(d) { return (d.hour - 1) * gridSize; })
+            .attr("y", function(d) { return (d.day - 1) * gridSize; })
+            .attr("rx", 4)
+            .attr("ry", 4)
+            .attr("class", "hour bordered")
+            .attr("width", gridSize)
+            .attr("height", gridSize)
+            .style("fill", colors[0])
+            .on("mouseover", function(d){
+                console.log(d);
+
+                var date = new Date(2015, 10, 25);
+                console.log(date);
+                date = new Date(date.getTime() + 60000 * 60 * 24 * d.day);
+                start_time = new Date(date.getTime() + 60000 * 60 * (d.hour-1));
+                end_time = new Date(start_time.getTime()+ 60000 * 60 * 1);
+                start = start_time.getFullYear() + "-" + start_time.getMonth() + "-" + start_time.getDate() + " " + start_time.getHours() + ":00:00"
+                end = end_time.getFullYear() + "-" + end_time.getMonth() + "-" + end_time.getDate() + " " + end_time.getHours() + ":00:00"
+
+
+                $.post("/request_start_pos_data/",
+                    {
+                        car_type: "0",
+                        start_time: start,
+                        end_time: end
+
+                    },
+                    function(data, status){
+
+                        var newData = {'0':0, '1':0, '2':0, '3':0, '4':0, '5':0, '6':0, '7':0}
+                        var count = {'0':0, '1':0, '2':0, '3':0, '4':0, '5':0, '6':0, '7':0}
+                        data.forEach(function(d) {
+                            d.surge_multiplier = +d.surge_multiplier
+                            newData[d.start_pos] = newData[d.start_pos] + d.surge_multiplier;
+                            count[d.start_pos] = count[d.start_pos] + 1;
+                        });
+
+                        for(var i = 0; i < 8; i++){
+                            newData[i] = newData[i]/count[i] * 15;
+                        }
+                        //console.log(newData);
+                        var radius = []
+                        for (var key in newData) {
+
+                            radius.push(newData[key]);
+
+                        }
+
+                        //console.log(radius);
+                        /*
+                        setTimeout(function(){
+                            //console.log(radius);
+
+                        }, 300);
+                        */
+                        draw_map(radius);
+
+                    });
+
+
+        });
+
+        cards2.transition().duration(1000)
+            .style("fill", function(d) { return colorScale2(d.value); });
+
+        cards2.select("title").text(function(d) { return d.value; });
+
+        cards2.exit().remove();
+
+        var legend2 = svg_2.selectAll(".legend")
+            .data([0].concat(colorScale2.quantiles()), function(d) {
+
+                console.log(d);
+                return d; });
+
+        legend2.enter().append("g")
+            .attr("class", "legend");
+
+        legend2.append("rect")
+            .attr("x", function(d, i) { return legendElementWidth * i; })
+            .attr("y", height + legend_height_offset)
+            .attr("width", legendElementWidth)
+            .attr("height", gridSize / 2)
+            .style("fill", function(d, i) { return colors[i]; });
+
+        legend2.append("text")
+            .attr("class", "mono")
+            .text(function(d) { return "≥ " + d.toFixed(2); })
+            .attr("x", function(d, i) { return legendElementWidth * i; })
+            .attr("y", height + gridSize + legend_height_offset);
+
+        legend2.exit().remove();
 }

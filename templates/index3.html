@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="http://rawgithub.com/markmarkoh/datamaps/master/dist/datamaps.none.min.js"></script>
+<div id="afghan" style="height: 500px; width: 900px;"></div>
+<script>
+  var map = new Datamap({
+    element: document.getElementById('afghan'),
+    geographyConfig: {
+      dataUrl: '/static/js/hsa.json'
+    },
+    scope: 'hsa',
+    fills: {
+      defaultFill: '#bada55',
+      someKey: '#fa0fa0'
+    },
+    data: {
+      'AFG-1758': {fillKey: 'someKey'},
+      'AFG-1747': {fillKey: 'someKey'}
+    },
+    setProjection: function(element) {
+      var projection = d3.geo.mercator()
+        .center([-84.566667, 33.8444]) //60.48677779100012,29.38660532600005
+              //[-85.606675,30.356734]
+        .scale(21000)
+              .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+
+        var path = d3.geo.path().projection(projection);
+        return {path: path, projection: projection};
+    },
+      fills: {
+          defaultFill: '#ABDDA4',
+          gt: 'blue',
+          sandy: 'blue',
+          buckhead: 'blue',
+          marietta: 'blue',
+          decatur: 'blue',
+          alpharetta: 'blue',
+          peachtree: 'blue',
+          stone: 'blue',
+          piedmont: 'blue'
+      }
+  });
+
+  //loc = ['gt', 'sandy', 'buckhead', 'marietta', 'decatur', 'alpharetta',  'peachtree', 'stone', 'piedmont']
+  var default_radius=10
+  map.bubbles([
+      {
+          name: 'Georgia Tech',
+          radius: default_radius,
+          fillKey: 'gt',
+          latitude: 33.775618,
+          longitude: -84.396285
+      },{
+          name: 'Sandy Spring',
+          radius: default_radius,
+          fillKey: 'sandy',
+          latitude: 33.9375,
+          longitude: -84.3686
+      },{
+          name: 'Buckhead',
+          radius: default_radius,
+          fillKey: 'buckhead',
+          latitude: 33.8394,
+          longitude: -84.3799
+      },{
+          name: 'Marietta',
+          radius: default_radius,
+          fillKey: 'marietta',
+          latitude: 33.9533,
+          longitude: -84.5406
+      },{
+          name: 'Decatur',
+          radius: default_radius,
+          fillKey: 'decatur',
+          latitude: 33.7714,
+          longitude: -84.2978
+      },{
+          name: 'Alpharetta',
+          radius: default_radius,
+          fillKey: 'alpharetta',
+          latitude: 34.0733,
+          longitude: -84.2811
+      },{
+          name: 'Peachtree',
+          radius: default_radius,
+          fillKey: 'peachtree',
+          latitude: 33.3990,
+          longitude: -84.5706
+      },{
+          name: 'Stone Mountain',
+          radius: default_radius,
+          fillKey: 'stone',
+          latitude: 33.8053,
+          longitude: -84.1714
+      },{
+          name: 'Piedmont',
+          radius: default_radius,
+          fillKey: 'piedmont',
+          latitude:33.783768,
+          longitude: -84.371889
+      }
+
+
+  ], {
+      popupTemplate: function(geo, data) {
+          return '<div class="hoverinfo">' + data.name + '</div>'
+      }
+  });
+
+</script>
+</body>
+</html>

@@ -10,7 +10,7 @@ var surge = [];
 function init(){
     /*Data */
 
-    margin_cof = {top: 30, right: 20, bottom: 30, left: 50},
+    margin_cof = {top: 30, right: 20, bottom: 30, left: 35},
     width_cof = 1000 - margin_cof.left - margin_cof.right,
     height_cof = 450 - margin_cof.top - margin_cof.bottom;
 
@@ -32,26 +32,6 @@ function init(){
             return result;
 	});
     };
-
-
-    // Get the data
-    $.post("/request_data/",
- 	   {
-        start_pos: "1",
-        car_type: "0",
-        start_time: "2015-10-26",
-        end_time: "2015-11-02"
-    },
-    function(data, status){
-		console.log(data);
-        updateClicked(data);
-		data.forEach(function(d) {
-	    	console.log(d);
-		});
-
-    });
-
-
 }
 
 
@@ -136,7 +116,10 @@ function updateClicked(data){
 	    .orient("left").ticks(8);
 
 	var yAxisRight = d3.svg.axis().scale(yscale1)
-	    .orient("left").ticks(5);
+
+
+		.orient("left").ticks(5);
+
 
 	var focus = svg_coffee.append("g")
 				.style("display", "none");
