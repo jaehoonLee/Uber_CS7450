@@ -8,8 +8,8 @@ var margin = { top: 50, right: 0, bottom: 100, left: 30 },
     legendElementWidth = gridSize*2,
     buckets = 9,
     //colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"], // alternatively colorbrewer.YlGnBu[9]
-    colors = ["#AED7E5","#519FCD","#2C8BC4","#3172DA","#0F5DD8","#097CC0","#0745A8","#063682","#044871"], // alternatively colorbrewer.YlGnBu[9]
-
+    //colors = ["#AED7E5","#519FCD","#2C8BC4","#3172DA","#0F5DD8","#097CC0","#0745A8","#063682","#044871"], // alternatively colorbrewer.YlGnBu[9]
+    colors = ["#C5EBFC","#62B6F6","#519FCD","#2C8BC4","#097CC0","#0745A8","#063682","#044871", "#000F17"],
     days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
     times = ["1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12a", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p", "12p"];
 datasets = ["data.tsv", "data2.tsv"];
@@ -194,17 +194,36 @@ function updateHeatmap(data)
             .attr("width", gridSize)
             .attr("height", gridSize)
             .style("fill", colors[0])
+            .on("mouseout", function() {
+                /*
+            	d3.selectAll(".datamaps-bubble").remove();
+                var default_radius=20;
+                draw_map([default_radius,default_radius,default_radius,default_radius,default_radius,default_radius,default_radius,default_radius]);
+                */
+            })
             .on("mouseover", function(d){
                 console.log(d);
 
-                var date = new Date(2015, 10, 25);
-                console.log(date);
-                date = new Date(date.getTime() + 60000 * 60 * 24 * d.day);
-                start_time = new Date(date.getTime() + 60000 * 60 * (d.hour-1));
-                end_time = new Date(start_time.getTime()+ 60000 * 60 * 1);
-                start = start_time.getFullYear() + "-" + start_time.getMonth() + "-" + start_time.getDate() + " " + start_time.getHours() + ":00:00"
-                end = end_time.getFullYear() + "-" + end_time.getMonth() + "-" + end_time.getDate() + " " + end_time.getHours() + ":00:00"
+                var sta_date = new Date("Oct 25, 2015 00:00:00");
 
+                var day_ub = d.day;
+
+                if(day_ub == 0) day_ub=7;
+
+                var offset = 0;
+                if(day_ub==7 && d.hour > 1)
+                    offset = 1;
+
+
+                console.log(d.hour);
+                sta_date = new Date(sta_date.getTime() + 60000 * 60 * 24 * day_ub);
+                var start_time = new Date(sta_date.getTime() + 60000 * 60 * (d.hour-1 + offset));
+                var end_time = new Date(sta_date.getTime() + 60000 * 60 * (d.hour + offset));
+
+
+                start = start_time.getFullYear() + "-" + (start_time.getMonth()+1) + "-" + start_time.getDate() + " " + start_time.getHours() + ":00:00"
+                end = end_time.getFullYear() + "-" + (end_time.getMonth()+1) + "-" + end_time.getDate() + " " + end_time.getHours() + ":00:00"
+                console.log(start + "," + end);
 
                 $.post("/request_start_pos_data/",
                     {
@@ -221,10 +240,12 @@ function updateHeatmap(data)
                             d.surge_multiplier = +d.surge_multiplier
                             newData[d.start_pos] = newData[d.start_pos] + d.surge_multiplier;
                             count[d.start_pos] = count[d.start_pos] + 1;
+
+
                         });
 
                         for(var i = 0; i < 8; i++){
-                            newData[i] = newData[i]/count[i] * 15;
+                            newData[i] = newData[i]/count[i] * 20;
                         }
                         //console.log(newData);
                         var radius = []
@@ -241,6 +262,9 @@ function updateHeatmap(data)
 
                         }, 300);
                         */
+
+                        d3.selectAll(".datamaps-bubble").remove();
+                        console.log(radius);
                         draw_map(radius);
 
                     });

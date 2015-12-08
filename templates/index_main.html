@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Uber Analytic System</title>
+    <title>Insider's Visual Guide to Uber</title>
     <script src="static/d3.min.js"></script>
     <script src="static/jquery.min.js"></script>
     <script src="static/js/topojson.js"></script>
@@ -14,7 +14,9 @@
     <script src="static/js/coffee_c.js"></script>
     <script src="static/js/price.js"></script>
     <script src="static/js/time.js"></script>
+
     <link rel="stylesheet" type="text/css" href="static/semantic/semantic.css">
+    <link rel="stylesheet" type="text/css" href="static/js/css_day.css">
     <script src="static/semantic/semantic.js"></script>
 
     <style>
@@ -59,6 +61,22 @@
         #content{
             margin-left:20px;
         }
+
+        #kjChart {
+            position: absolute;
+            left: 1000px;
+            top: 750px;
+        }
+        #myDay {
+          position: absolute;
+          top: 740px;  left: 1000px;
+          width: 100px;
+          height: 40px;
+          text-align: center;
+          color: #178DB4
+          padding: 10px;
+          font-size: 120%;
+        }
     </style>
 </head>
 
@@ -71,9 +89,15 @@
 
             if(i == type){
                 $("#car" + i).attr('class', 'ui button active');
+                $("#car2_" + i).attr('class', 'ui button active');
+                $("#car3_" + i).attr('class', 'ui button active');
             }
-            else
+            else{
                 $("#car" + i).attr('class', 'ui button');
+                $("#car2_" + i).attr('class', 'ui button');
+                $("#car3_" + i).attr('class', 'ui button');
+            }
+
         }
 
         console.log("H");
@@ -89,6 +113,7 @@
                     updateHeatmap(data);
                     update_price(data);
                     update_time(data);
+                    update_timebar(data);
                 });
 
     }
@@ -124,6 +149,7 @@
                                     updateHeatmap(data);
                                     update_price(data);
                                     update_time(data);
+                                    update_timebar(data);
                                 });
 
                     }
@@ -140,14 +166,16 @@
 
     <div class="mainview">
 
-        <div class="ui huge header ">Uber suck!</div>
+        <h1 class="ui huge header ">Insider's Visual Guide to Uber
+           <!-- <div class="sub header"> Data visualization for custumized user group</div>-->
+        </h1>
 
         <div class="ui top attached tabular menu">
             <a class="active item" data-tab="first">Customer</a>
             <a class="item" data-tab="second">Manager</a>
             <a class="item" data-tab="third">Driver</a>
         </div>
-        <div class="ui bottom attached active tab segment" data-tab="first">
+        <div class="ui bottom attached active tab segment" data-tab="first" style="height: 1400px;">
             <div id="content">
                 <div class="ui text menu" >
                     <div class="header item">Pickup Location:</div>
@@ -180,11 +208,11 @@
 
 
                     <div id="carType" class="float">
-                        <button id="car0" class="ui active button" onclick="compute(0)">UberX</button>
-                        <button id="car1" class="ui button" onclick="compute(1)">UberXL</button>
-                        <button id="car2" class="ui button" onclick="compute(2)">UberBlack</button>
-                        <button id="car3" class="ui button" onclick="compute(3)">UberSUV</button>
-                        <button id="car4" class="ui button" onclick="compute(4)">UberSelect</button>
+                        <button id="car2_0" class="ui active button" onclick="compute(0)">UberX</button>
+                        <button id="car2_1" class="ui button" onclick="compute(1)">UberXL</button>
+                        <button id="car2_2" class="ui button" onclick="compute(2)">UberBlack</button>
+                        <button id="car2_3" class="ui button" onclick="compute(3)">UberSUV</button>
+                        <button id="car2_4" class="ui button" onclick="compute(4)">UberSelect</button>
                     </div>
                 </div>
 
@@ -193,6 +221,9 @@
             <div class="ui horizontal divider" style="width:960px; margin-left:22px;"> Trip Price  </div>
             <div id="price">
 
+            </div>
+            <div id="myDay"></div>
+            <div id="kjChart">
             </div>
             </br>
             <div class="ui horizontal divider" style="width:960px; margin-left:22px;"> Total Trip time </div>
@@ -292,11 +323,11 @@
 
 
                     <div id="carType" class="float">
-                        <button id="car0" class="ui active button" onclick="compute(0)">UberX</button>
-                        <button id="car1" class="ui button" onclick="compute(1)">UberXL</button>
-                        <button id="car2" class="ui button" onclick="compute(2)">UberBlack</button>
-                        <button id="car3" class="ui button" onclick="compute(3)">UberSUV</button>
-                        <button id="car4" class="ui button" onclick="compute(4)">UberSelect</button>
+                        <button id="car3_0" class="ui active button" onclick="compute(0)">UberX</button>
+                        <button id="car3_1" class="ui button" onclick="compute(1)">UberXL</button>
+                        <button id="car3_2" class="ui button" onclick="compute(2)">UberBlack</button>
+                        <button id="car3_3" class="ui button" onclick="compute(3)">UberSUV</button>
+                        <button id="car3_4" class="ui button" onclick="compute(4)">UberSelect</button>
                     </div>
                 </div>
 
@@ -321,7 +352,7 @@
     </div>
 </div>
 <script src="static/js/heatmap.js"></script>
-<script src="static/js/mapview.js"></script>
+<script src="static/js/time_bar.js"></script>
 <script src="static/js/util.js"></script>
 <script>
 
@@ -334,7 +365,7 @@
             if(tabPath == 'third'){
                 if(!initMap){
 
-                    colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]; // alternatively colorbrewer.YlGnBu[9]
+                    city_colors = ["#B03060","#FE9A76","#FFD700","#32CD32","#016936","#008080","#0E6EB8","#B413EC","#081d58"]; // alternatively colorbrewer.YlGnBu[9]
 
                     map = new Datamap({
                         element: document.getElementById('buckhead_con'),
@@ -343,36 +374,40 @@
                         },
                         scope: 'hsa',
                         fills: {
-                            defaultFill: '#bada55',
-                            someKey: '#fa0fa0'
+                            defaultFill: '#ABDDA4',
+                            someKey: '#fa0fa0',
+                            Alpharetta: city_colors[0],
+                            Buckhead: city_colors[1],
+                            Decatur: city_colors[2],
+                            GT: city_colors[3],
+                            Marietta: city_colors[4],
+                            Peachtree: city_colors[5],
+                            Sandy: city_colors[6],
+                            Stone: city_colors[7],
+                            Piedmont: city_colors[8]
                         },
                         data: {
-                            'AFG-1758': {fillKey: 'someKey'},
-                            'AFG-1747': {fillKey: 'someKey'}
+                            /*
+                            '11001': {fillKey: 'someKey'},
+                            '11006': {fillKey: 'someKey'},
+                            '11007': {fillKey: 'someKey'},
+                            '11008': {fillKey: 'someKey'},
+                            '11009': {fillKey: 'someKey'},
+                            '11010': {fillKey: 'someKey'}
+                            */
                         },
                         setProjection: function(element) {
                             var projection = d3.geo.mercator()
-                                    .center([-84.566667, 33.684]) //60.48677779100012,29.38660532600005
+                                    .center([-84.266667, 33.764]) //60.48677779100012,29.38660532600005
                                 //[-85.606675,30.356734]
-                                    .scale(34000)
+                                    .scale(30000)
                                     .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
 
                             var path = d3.geo.path().projection(projection);
                             return {path: path, projection: projection};
-                        },
-                        fills: {
-                            defaultFill: '#ABDDA4',
-                            Alpharetta: colors[0],
-                            Buckhead: colors[1],
-                            Decatur: colors[2],
-                            GT: colors[3],
-                            Marietta: colors[4],
-                            Peachtree: colors[5],
-                            Sandy: colors[6],
-                            Stone: colors[7],
-                            Piedmont: colors[8]
                         }
                     });
+
 
                     console.log(map);
 
@@ -396,7 +431,7 @@
                     for(var i = 0; i < 8; i++)
                     {
                         legend.append('circle')
-                            .style('fill', colors[i])
+                            .style('fill', city_colors[i])
                             .attr('r',  10)
                             .attr('cx', 20)
                             .attr('cy', 20 + i * 25);
@@ -488,7 +523,8 @@
                     initMap = true;
 
                 }
-                draw_map([10,10,10,10,10,10,10,10]);
+                var default_radius=20;
+                draw_map([default_radius,default_radius,default_radius,default_radius,default_radius,default_radius,default_radius,default_radius]);
             }
 
         }
@@ -509,6 +545,7 @@
         updateHeatmap(data);
         update_price(data);
         update_time(data);
+        update_timebar(data);
 
     });
     loc = ['gt', 'sandy', 'buckhead', 'marietta', 'decatur', 'alpharetta',  'peachtree', 'stone', 'piedmont']
@@ -516,6 +553,7 @@
 
     function draw_map(default_radius){
         console.log(default_radius);
+
         map.bubbles([
             {
                 name: 'Alpharetta',
@@ -572,13 +610,14 @@
                 fillKey: 'Stone',
                 latitude: 33.8053,
                 longitude: -84.1714
-            },{
+            }
+            /*,{
                 name: 'Piedmont Park',
                 radius: default_radius[0],
                 fillKey: 'Piedmont',
                 latitude:33.783768,
                 longitude: -84.371889
-            }
+            }*/
 
 
         ], {
@@ -588,8 +627,6 @@
         });
 
     }
-
-
 
 </script>
 </body>

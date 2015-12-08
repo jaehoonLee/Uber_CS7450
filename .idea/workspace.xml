@@ -28,71 +28,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index_main.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index_main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/index_main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31687242" vertical-offset="1976" max-vertical-offset="9045">
-              <caret line="142" column="47" selection-start-line="142" selection-start-column="47" selection-end-line="142" selection-end-column="47" />
+            <state vertical-scroll-proportion="46.666668" vertical-offset="7675" max-vertical-offset="9600">
+              <caret line="353" column="44" selection-start-line="353" selection-start-column="44" selection-end-line="353" selection-end-column="44" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#1;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#1;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="time.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/js/time.js">
+      <file leaf-file-name="topojson.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/js/topojson.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.357143" vertical-offset="270" max-vertical-offset="3360">
-              <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="coffee_c.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/js/coffee_c.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.5714285" vertical-offset="820" max-vertical-offset="6645">
-              <caret line="70" column="44" selection-start-line="70" selection-start-column="44" selection-end-line="70" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hsa.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/js/hsa.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
-              <caret line="0" column="152" selection-start-line="0" selection-start-column="152" selection-end-line="0" selection-end-column="152" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="datamaps.all.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/js/datamaps.all.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="105">
-              <caret line="0" column="12233" selection-start-line="0" selection-start-column="12232" selection-end-line="0" selection-end-column="12233" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="price.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/js/price.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.851851" vertical-offset="211" max-vertical-offset="3120">
-              <caret line="30" column="31" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="8100">
+              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -108,34 +69,74 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mapview.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/js/mapview.js">
+      <file leaf-file-name="coffee_c.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/js/coffee_c.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#49#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index3.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index3.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.625" vertical-offset="105" max-vertical-offset="1800">
-              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="110" selection-end-column="5" />
+            <state vertical-scroll-proportion="-168.88889" vertical-offset="570" max-vertical-offset="6645">
+              <caret line="344" column="52" selection-start-line="344" selection-start-column="47" selection-end-line="344" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="heatmap.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="time_bar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/js/time_bar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4459" max-vertical-offset="5445">
+              <caret line="278" column="40" selection-start-line="278" selection-start-column="40" selection-end-line="278" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/js/util.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="price.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/js/price.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="29.088888" vertical-offset="3019" max-vertical-offset="4950">
+              <caret line="114" column="31" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="time.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/js/time.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.962963" vertical-offset="1441" max-vertical-offset="5115">
+              <caret line="114" column="26" selection-start-line="114" selection-start-column="26" selection-end-line="114" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="heatmap.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/js/heatmap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.357143" vertical-offset="3330" max-vertical-offset="4290">
-              <caret line="242" column="26" selection-start-line="242" selection-start-column="26" selection-end-line="242" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.6103896" vertical-offset="2971" max-vertical-offset="4650">
+              <caret line="220" column="92" selection-start-line="220" selection-start-column="92" selection-end-line="220" selection-end-column="92" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="679" max-vertical-offset="5460">
+              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,7 +161,6 @@
         <option value="$PROJECT_DIR$/templates/js/coffee.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/templates/js/util.js" />
-        <option value="$PROJECT_DIR$/templates/js/mapview.js" />
         <option value="$PROJECT_DIR$/templates/map.html" />
         <option value="$PROJECT_DIR$/templates/js/customAfghanMap.topo.json" />
         <option value="$PROJECT_DIR$/templates/js/GA.geo.json" />
@@ -171,11 +171,14 @@
         <option value="$PROJECT_DIR$/CS7450/urls.py" />
         <option value="$PROJECT_DIR$/templates/index2.html" />
         <option value="$PROJECT_DIR$/Main/views.py" />
-        <option value="$PROJECT_DIR$/templates/js/heatmap.js" />
-        <option value="$PROJECT_DIR$/templates/js/price.js" />
-        <option value="$PROJECT_DIR$/templates/js/time.js" />
+        <option value="$PROJECT_DIR$/templates/js/time_bar.js" />
+        <option value="$PROJECT_DIR$/templates/js/css_day.css" />
         <option value="$PROJECT_DIR$/templates/js/coffee_c.js" />
+        <option value="$PROJECT_DIR$/templates/js/time.js" />
+        <option value="$PROJECT_DIR$/templates/js/price.js" />
+        <option value="$PROJECT_DIR$/templates/js/mapview.js" />
         <option value="$PROJECT_DIR$/templates/index_main.html" />
+        <option value="$PROJECT_DIR$/templates/js/heatmap.js" />
       </list>
     </option>
   </component>
@@ -183,8 +186,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="28" />
-    <option name="y" value="23" />
+    <option name="x" value="8" />
+    <option name="y" value="60" />
     <option name="width" value="1680" />
     <option name="height" value="977" />
   </component>
@@ -275,20 +278,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS7450" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS7450" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS7450" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -311,11 +300,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/backup" />
       <recent name="$PROJECT_DIR$/templates/js" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/Data" />
-      <recent name="$PROJECT_DIR$/Data/Week/stone" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/js" />
@@ -580,14 +569,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="28" y="23" width="1680" height="977" extended-state="6" />
+    <frame x="8" y="60" width="1680" height="977" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32881355" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -595,7 +584,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15934066" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32881355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -626,27 +615,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///Library/Python/2.7/site-packages/django/contrib/admin/static/admin/js/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="154534" max-vertical-offset="155100">
-          <caret line="10327" column="8" selection-start-line="10327" selection-start-column="8" selection-end-line="10327" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/infoFinal/operations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6296296" vertical-offset="7096" max-vertical-offset="7665">
-          <caret line="485" column="21" selection-start-line="485" selection-start-column="16" selection-end-line="485" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="566">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Data/data.tsv">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-175.0" vertical-offset="0" max-vertical-offset="5340">
@@ -677,6 +645,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="11250" max-vertical-offset="527010">
           <caret line="776" column="35" selection-start-line="776" selection-start-column="35" selection-end-line="776" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -892,14 +861,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/map.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="1020">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/js/hsa_copy.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
@@ -912,14 +873,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="90">
           <caret line="0" column="3" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.333334" vertical-offset="1213" max-vertical-offset="1890">
-          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -940,10 +893,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/util.js">
+    <entry file="file://$PROJECT_DIR$/templates/js/datamaps.all.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="539">
+          <caret line="0" column="12233" selection-start-line="0" selection-start-column="12232" selection-end-line="0" selection-end-column="12233" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/backup/price.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3120">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -956,47 +917,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/map.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.259259" vertical-offset="1861" max-vertical-offset="5460">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/topojson.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="8100">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        <state vertical-scroll-proportion="-4.375" vertical-offset="30" max-vertical-offset="1020">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.625" vertical-offset="105" max-vertical-offset="1800">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="110" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/datamaps.all.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="539">
-          <caret line="0" column="12233" selection-start-line="0" selection-start-column="12232" selection-end-line="0" selection-end-column="12233" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/mapview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#49#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1008,10 +933,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/heatmap.js">
+    <entry file="file://$PROJECT_DIR$/templates/index3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.357143" vertical-offset="3330" max-vertical-offset="4290">
-          <caret line="242" column="26" selection-start-line="242" selection-start-column="26" selection-end-line="242" selection-end-column="26" />
+        <state vertical-scroll-proportion="-17.5" vertical-offset="0" max-vertical-offset="1800">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.333334" vertical-offset="1213" max-vertical-offset="1890">
+          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/js/css_day.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/js/time.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.962963" vertical-offset="1441" max-vertical-offset="5115">
+          <caret line="114" column="26" selection-start-line="114" selection-start-column="26" selection-end-line="114" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/js/topojson.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="8100">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1024,51 +981,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/price.js">
+    <entry file="file://$PROJECT_DIR$/templates/js/time_bar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.851851" vertical-offset="211" max-vertical-offset="3120">
-          <caret line="30" column="31" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4459" max-vertical-offset="5445">
+          <caret line="278" column="40" selection-start-line="278" selection-start-column="40" selection-end-line="278" selection-end-column="40" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/time.js">
+    <entry file="file://$PROJECT_DIR$/templates/js/util.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.357143" vertical-offset="270" max-vertical-offset="3360">
-          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/js/price.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="29.088888" vertical-offset="3019" max-vertical-offset="4950">
+          <caret line="114" column="31" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="31" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/js/coffee_c.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5714285" vertical-offset="820" max-vertical-offset="6645">
-          <caret line="70" column="44" selection-start-line="70" selection-start-column="44" selection-end-line="70" selection-end-column="57" />
+        <state vertical-scroll-proportion="-168.88889" vertical-offset="570" max-vertical-offset="6645">
+          <caret line="344" column="52" selection-start-line="344" selection-start-column="47" selection-end-line="344" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index_main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31687242" vertical-offset="1976" max-vertical-offset="9045">
-          <caret line="142" column="47" selection-start-line="142" selection-start-column="47" selection-end-line="142" selection-end-column="47" />
+        <state vertical-scroll-proportion="46.666668" vertical-offset="7675" max-vertical-offset="9600">
+          <caret line="353" column="44" selection-start-line="353" selection-start-column="44" selection-end-line="353" selection-end-column="44" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#1;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="679" max-vertical-offset="5460">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/js/heatmap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6103896" vertical-offset="2971" max-vertical-offset="4650">
+          <caret line="220" column="92" selection-start-line="220" selection-start-column="92" selection-end-line="220" selection-end-column="92" />
+          <folding />
         </state>
       </provider>
     </entry>
