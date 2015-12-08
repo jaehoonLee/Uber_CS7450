@@ -15,7 +15,8 @@ function init(){
     height_cof = 450 - margin_cof.top - margin_cof.bottom;
 
     parseDate = d3.time.format("%Y-%m-%d %H:%M").parse,
-    bisectDate = d3.bisector(function(d) { return d.key; }).left,
+    bisectDate = d3.bisector(function(d) {
+		return d.date; }).left,
     formatValue = d3.format(",.1f"),
     formatCurrency = function(d) { return "x" + formatValue(d); };
 
@@ -56,18 +57,15 @@ function updateClicked(data){
 
 	    wait.push(+d.estimated_waiting_time / 60.0);
 	    surge.push(+d.surge_multiplier);
-            timestamp.push(parseDate(d.timestamp));
+		timestamp.push(parseDate(d.timestamp));
 	});
 	// Moving average of surge estimated waiting time
 	wait = movingWindowAvg(wait, 7);
-	//surge = movingWindowAvg(surge, 7);
+	//surge = movingWindowAvg(surge, 2);
 
 	// Scale the range of the data
-	var xscale = d3.time.scale().domain(d3.extent(timestamp, function(d) {
-	    return d; })).range([0,width_cof]);
-
+	var xscale = d3.time.scale().domain(d3.extent(timestamp, function(d) {return d; })).range([0,width_cof]);
 	var yscale0 = d3.scale.linear().domain([d3.min(wait), d3.max(wait)]).range([height_cof, 0]);
-
 	var yscale1 = d3.scale.linear().domain([d3.min(surge), d3.max(surge)]).range([height_cof, 0]);
 
 
@@ -82,8 +80,8 @@ function updateClicked(data){
             });
 
 	valueline2 = d3.svg.line()
-    	    .interpolate("basis")
-	    .x(function (d, i) {
+    	    //.interpolate("basis")
+	    	.x(function (d, i) {
                 return xscale(timestamp[i]);
             })
             .y(function (d) {
@@ -116,8 +114,6 @@ function updateClicked(data){
 	    .orient("left").ticks(8);
 
 	var yAxisRight = d3.svg.axis().scale(yscale1)
-
-
 		.orient("left").ticks(5);
 
 
@@ -149,7 +145,7 @@ function updateClicked(data){
 
 
 	svg_coffee.append("svg:path")      // Add the valueline2 path.
-	    .style("stroke", "red")
+	    	.style("stroke", "red")
             .attr("d", valueline2(surge)).attr("class", "y1");
 
 
@@ -304,50 +300,61 @@ function updateClicked(data){
 	    .on("mousemove", mousemove);
 
 	function mousemove() {
+
 		var x0 = xscale.invert(d3.mouse(this)[0]),
 			i = bisectDate(data, x0, 1),
 			d0 = data[i - 1],
 			d1 = data[i],
 			d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+
+		//console.log(x0);
+		console.log(x0 - d0.date);
+		console.log(d1.date - x0);
+		console.log(yscale1(d.surge));
+
+
+		var y_val_m = yscale1(d.surge);
+		console.log(yscale1(d.surge));
+
 		focus.select("circle.y")
 			.attr("transform",
 			"translate(" + xscale(d.key) + "," +
-			yscale1(d.surge) + ")");
+			y_val_m + ")");
 
 		focus.select("text.y1")
 			.attr("transform",
 			"translate(" + xscale(d.key) + "," +
-			yscale1(d.surge) + ")")
+			y_val_m + ")")
 			.text(d.surge);
 
 		focus.select("text.y2")
 			.attr("transform",
 			"translate(" + xscale(d.key) + "," +
-			yscale1(d.surge) + ")")
+			y_val_m + ")")
 			.text(d.surge);
 
 		focus.select("text.y3")
 			.attr("transform",
 			"translate(" + xscale(d.key) + "," +
-			yscale1(d.surge) + ")")
+			y_val_m + ")")
 			.text(formatDate(d.key));
 
 		focus.select("text.y4")
 			.attr("transform",
 			"translate(" + xscale(d.key) + "," +
-			yscale1(d.surge) + ")")
+			y_val_m + ")")
 			.text(formatDate(d.key));
 
 		focus.select(".x")
 			.attr("transform",
 			"translate(" + xscale(d.key) + "," +
-			yscale1(d.surge) + ")")
+			y_val_m + ")")
 			.attr("y2", height_cof - yscale1(d.surge));
 
 		focus.select(".y")
 			.attr("transform",
 			"translate(" + width_cof * -1 + "," +
-			yscale1(d.surge) + ")")
+			y_val_m + ")")
 			.attr("x2", width_cof + width_cof);
 
 	}

@@ -304,42 +304,147 @@ function update_timebar(data) {
     attachTimeLabel(svg_bar, height_bar);
     //var parseDate = d3.time.format("%Y-%m-%d %H:%M").parse;
 
+    function clone(obj) {
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
+    }
+
+
+
     //get data for use
     var i = 0;
     var temp1 = [];
     for (var total = 0;total < 24;total++) {
-      temp1.push(data[i]);
-      i+=6;
+        var duration = 0;
+        var estimated_waiting_time = 0;
+        for(var j = i; j < i + 6; j++){
+            duration += data[j].duration;
+            estimated_waiting_time += data[j].estimated_waiting_time;
+        }
+
+        var cp_data = clone(data[i]);
+        cp_data.duration = duration/6;
+        cp_data.estimated_waiting_time = estimated_waiting_time/6;
+
+        temp1.push(cp_data);
+        i+=6;
     }
+
+    console.log(i);
     var temp2 = [];
     for (var total = 0;total < 24;total++) {
-      temp2.push(data[i]);
-      i+=6;
+
+        var duration = 0;
+        var estimated_waiting_time = 0;
+        for(var j = i; j < i + 6; j++){
+            duration += data[j].duration;
+            estimated_waiting_time += data[j].estimated_waiting_time;
+        }
+        var cp_data = clone(data[i]);
+        cp_data.duration = duration/6;
+        cp_data.estimated_waiting_time = estimated_waiting_time/6;
+
+        temp2.push(cp_data);
+        i+=6;
     }
+    console.log(i);
     var temp3 = [];
     for (var total = 0;total < 24;total++) {
-      temp3.push(data[i]);
-      i+=6;
+        var duration = 0;
+        var estimated_waiting_time = 0;
+        for(var j = i; j < i + 6; j++){
+            duration += data[j].duration;
+            estimated_waiting_time += data[j].estimated_waiting_time;
+        }
+
+
+        var cp_data = clone(data[i]);
+        cp_data.duration = duration/6;
+        cp_data.estimated_waiting_time = estimated_waiting_time/6;
+
+        temp3.push(cp_data);
+        i+=6;
     }
+    console.log(i);
     var temp4 = [];
     for (var total = 0;total < 24;total++) {
-      temp4.push(data[i]);
-      i+=6;
+        var duration = 0;
+        var estimated_waiting_time = 0;
+        for(var j = i; j < i + 6; j++){
+            duration += data[j].duration;
+            estimated_waiting_time += data[j].estimated_waiting_time;
+        }
+
+
+        var cp_data = clone(data[i]);
+        cp_data.duration = duration/6;
+        cp_data.estimated_waiting_time = estimated_waiting_time/6;
+
+        temp4.push(cp_data);
+        i+=6;
     }
+    console.log(i);
     var temp5 = [];
     for (var total = 0;total < 24;total++) {
-      temp5.push(data[i]);
-      i+=6;
+        var duration = 0;
+        var estimated_waiting_time = 0;
+        for(var j = i; j < i + 6; j++){
+            duration += data[j].duration;
+            estimated_waiting_time += data[j].estimated_waiting_time;
+        }
+
+
+        var cp_data = clone(data[i]);
+        cp_data.duration = duration/6;
+        cp_data.estimated_waiting_time = estimated_waiting_time/6;
+
+        temp5.push(cp_data);
+        i+=6;
     }
+    console.log(i);
     var temp6 = [];
     for (var total = 0;total < 24;total++) {
-      temp6.push(data[i]);
-      i+=6;
+        var duration = 0;
+        var estimated_waiting_time = 0;
+        for(var j = i; j < i + 6; j++){
+            duration += data[j].duration;
+            estimated_waiting_time += data[j].estimated_waiting_time;
+        }
+
+
+        var cp_data = clone(data[i]);
+        cp_data.duration = duration/6;
+        cp_data.estimated_waiting_time = estimated_waiting_time/6;
+
+        temp6.push(cp_data);
+        i+=6;
     }
+    console.log(i);
     var temp0 = [];
     for (var total = 0;total < 24;total++) {
-      temp0.push(data[i]);
-      i+=6;
+
+        var duration = 0;
+        var estimated_waiting_time = 0;
+        for(var j = i; j < i + 6; j++){
+            if(j >= data.length)
+                break;
+            duration += data[j].duration;
+            estimated_waiting_time += data[j].estimated_waiting_time;
+
+
+        }
+
+
+        var cp_data = clone(data[i]);
+        cp_data.duration = duration/6;
+        cp_data.estimated_waiting_time = estimated_waiting_time/6;
+
+        temp0.push(cp_data);
+        i+=6;
     }
 
     globalBarData[0] = temp0;

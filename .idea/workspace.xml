@@ -31,8 +31,8 @@
       <file leaf-file-name="index_main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/index_main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="46.666668" vertical-offset="7675" max-vertical-offset="9600">
-              <caret line="353" column="44" selection-start-line="353" selection-start-column="44" selection-end-line="353" selection-end-column="44" />
+            <state vertical-scroll-proportion="-2.9411764" vertical-offset="2460" max-vertical-offset="9600">
+              <caret line="174" column="64" selection-start-line="174" selection-start-column="64" selection-end-line="174" selection-end-column="64" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -49,41 +49,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="topojson.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/js/topojson.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="8100">
-              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="timeline.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/js/timeline.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="256" max-vertical-offset="2010">
-              <caret line="29" column="61" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="coffee_c.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/js/coffee_c.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-168.88889" vertical-offset="570" max-vertical-offset="6645">
-              <caret line="344" column="52" selection-start-line="344" selection-start-column="47" selection-end-line="344" selection-end-column="52" />
+            <state vertical-scroll-proportion="-7.2222223" vertical-offset="1005" max-vertical-offset="6750">
+              <caret line="82" column="35" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="coffee.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/js/coffee.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="2835">
+              <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="time_bar.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/js/time_bar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.29411766" vertical-offset="6330" max-vertical-offset="7020">
+              <caret line="432" column="19" selection-start-line="432" selection-start-column="19" selection-end-line="432" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="time_bar.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/js/time_bar.js">
+        <entry file="file://$PROJECT_DIR$/templates/backup/time_bar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4459" max-vertical-offset="5445">
-              <caret line="278" column="40" selection-start-line="278" selection-start-column="40" selection-end-line="278" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4369" max-vertical-offset="5970">
+              <caret line="307" column="0" selection-start-line="307" selection-start-column="0" selection-end-line="307" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -102,8 +102,8 @@
       <file leaf-file-name="price.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/js/price.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="29.088888" vertical-offset="3019" max-vertical-offset="4950">
-              <caret line="114" column="31" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="31" />
+            <state vertical-scroll-proportion="-5.577778" vertical-offset="4429" max-vertical-offset="4950">
+              <caret line="312" column="29" selection-start-line="312" selection-start-column="14" selection-end-line="312" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -112,17 +112,17 @@
       <file leaf-file-name="time.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/js/time.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.962963" vertical-offset="1441" max-vertical-offset="5115">
-              <caret line="114" column="26" selection-start-line="114" selection-start-column="26" selection-end-line="114" selection-end-column="26" />
+            <state vertical-scroll-proportion="13.333333" vertical-offset="3525" max-vertical-offset="5115">
+              <caret line="211" column="27" selection-start-line="211" selection-start-column="27" selection-end-line="211" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="heatmap.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="heatmap.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/js/heatmap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6103896" vertical-offset="2971" max-vertical-offset="4650">
+            <state vertical-scroll-proportion="-12.185185" vertical-offset="2971" max-vertical-offset="4650">
               <caret line="220" column="92" selection-start-line="220" selection-start-column="92" selection-end-line="220" selection-end-column="92" />
               <folding />
             </state>
@@ -171,14 +171,15 @@
         <option value="$PROJECT_DIR$/CS7450/urls.py" />
         <option value="$PROJECT_DIR$/templates/index2.html" />
         <option value="$PROJECT_DIR$/Main/views.py" />
-        <option value="$PROJECT_DIR$/templates/js/time_bar.js" />
         <option value="$PROJECT_DIR$/templates/js/css_day.css" />
-        <option value="$PROJECT_DIR$/templates/js/coffee_c.js" />
-        <option value="$PROJECT_DIR$/templates/js/time.js" />
-        <option value="$PROJECT_DIR$/templates/js/price.js" />
         <option value="$PROJECT_DIR$/templates/js/mapview.js" />
-        <option value="$PROJECT_DIR$/templates/index_main.html" />
         <option value="$PROJECT_DIR$/templates/js/heatmap.js" />
+        <option value="$PROJECT_DIR$/templates/js/price.js" />
+        <option value="$PROJECT_DIR$/templates/js/coffee_c.js" />
+        <option value="$PROJECT_DIR$/templates/index_main.html" />
+        <option value="$PROJECT_DIR$/templates/js/time.js" />
+        <option value="$PROJECT_DIR$/templates/backup/time_bar.js" />
+        <option value="$PROJECT_DIR$/templates/js/time_bar.js" />
       </list>
     </option>
   </component>
@@ -837,14 +838,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/coffee.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="2835">
-          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/js/GA.geo.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="135">
@@ -957,14 +950,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/time.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.962963" vertical-offset="1441" max-vertical-offset="5115">
-          <caret line="114" column="26" selection-start-line="114" selection-start-column="26" selection-end-line="114" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/js/topojson.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="8100">
@@ -981,54 +966,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/time_bar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4459" max-vertical-offset="5445">
-          <caret line="278" column="40" selection-start-line="278" selection-start-column="40" selection-end-line="278" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/js/util.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/price.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="29.088888" vertical-offset="3019" max-vertical-offset="4950">
-          <caret line="114" column="31" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/js/coffee_c.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-168.88889" vertical-offset="570" max-vertical-offset="6645">
-          <caret line="344" column="52" selection-start-line="344" selection-start-column="47" selection-end-line="344" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index_main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="46.666668" vertical-offset="7675" max-vertical-offset="9600">
-          <caret line="353" column="44" selection-start-line="353" selection-start-column="44" selection-end-line="353" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1044,8 +986,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/js/heatmap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6103896" vertical-offset="2971" max-vertical-offset="4650">
+        <state vertical-scroll-proportion="-12.185185" vertical-offset="2971" max-vertical-offset="4650">
           <caret line="220" column="92" selection-start-line="220" selection-start-column="92" selection-end-line="220" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/js/coffee.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="2835">
+          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/js/coffee_c.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.2222223" vertical-offset="1005" max-vertical-offset="6750">
+          <caret line="82" column="35" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/js/price.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.577778" vertical-offset="4429" max-vertical-offset="4950">
+          <caret line="312" column="29" selection-start-line="312" selection-start-column="14" selection-end-line="312" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index_main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.9411764" vertical-offset="2460" max-vertical-offset="9600">
+          <caret line="174" column="64" selection-start-line="174" selection-start-column="64" selection-end-line="174" selection-end-column="64" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/backup/time_bar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4369" max-vertical-offset="5970">
+          <caret line="307" column="0" selection-start-line="307" selection-start-column="0" selection-end-line="307" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/js/time.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="13.333333" vertical-offset="3525" max-vertical-offset="5115">
+          <caret line="211" column="27" selection-start-line="211" selection-start-column="27" selection-end-line="211" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/js/time_bar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29411766" vertical-offset="6330" max-vertical-offset="7020">
+          <caret line="432" column="19" selection-start-line="432" selection-start-column="19" selection-end-line="432" selection-end-column="19" />
           <folding />
         </state>
       </provider>
