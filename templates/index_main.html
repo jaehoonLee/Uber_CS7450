@@ -86,7 +86,7 @@
     function compute(type){
         global_type = type;
         for(var i = 0; i < 5; i++){
-
+            console.log(global_type);
             if(i == type){
                 $("#car" + i).attr('class', 'ui button active');
                 $("#car2_" + i).attr('class', 'ui button active');
@@ -129,13 +129,19 @@
                         for(var i = 0; i < 8; i++){
 
                             if(i == value){
+                                $("#startpos_2" + i).attr('class', 'item active selected');
+                                $("#startpos_3" + i).attr('class', 'item active selected');
                                 $("#startpos" + i).attr('class', 'item active selected');
+
                             }
-                            else
+                            else{
                                 $("#startpos" + i).attr('class', 'item');
+                                $("#startpos_2" + i).attr('class', 'item');
+                                $("#startpos_3" + i).attr('class', 'item');
+                            }
                         }
 
-                        console.log(text + ":" + value);
+                        console.log("val:" + text + ":" + value);
 
                         $.post("/request_data/",
                                 {
@@ -242,14 +248,14 @@
                         <i class="dropdown icon"></i>
                         <div class="startpos text">Alpharetta</div>
                         <div class="menu">
-                            <div class="item active selected" id="startpos1" data-value="1">Alpharetta</div>
-                            <div class="item" id="startpos2" data-value="2">Buckhead</div>
-                            <div class="item" id="startpos3" data-value="3">Decatur</div>
-                            <div class="item" id="startpos4" data-value="4">Georgia Tech</div>
-                            <div class="item" id="startpos5" data-value="5">Marietta</div>
-                            <div class="item" id="startpos6" data-value="6">Peachtree City</div>
-                            <div class="item" id="startpos7" data-value="7">Sandy Springs</div>
-                            <div class="item" id="startpos8" data-value="8 ">Stone Mountain</div>
+                            <div class="item active selected" id="startpos2_1" data-value="1">Alpharetta</div>
+                            <div class="item" id="startpos2_2" data-value="2">Buckhead</div>
+                            <div class="item" id="startpos2_3" data-value="3">Decatur</div>
+                            <div class="item" id="startpos2_4" data-value="4">Georgia Tech</div>
+                            <div class="item" id="startpos2_5" data-value="5">Marietta</div>
+                            <div class="item" id="startpos2_6" data-value="6">Peachtree City</div>
+                            <div class="item" id="startpos2_7" data-value="7">Sandy Springs</div>
+                            <div class="item" id="startpos2_8" data-value="8 ">Stone Mountain</div>
                         </div>
                     </div>
                     <div class="header item" id="basic-addon">Destination: </div>
@@ -299,14 +305,14 @@
                         <i class="dropdown icon"></i>
                         <div class="startpos text">Alpharetta</div>
                         <div class="menu">
-                            <div class="item active selected" id="startpos1" data-value="1">Alpharetta</div>
-                            <div class="item" id="startpos2" data-value="2">Buckhead</div>
-                            <div class="item" id="startpos3" data-value="3">Decatur</div>
-                            <div class="item" id="startpos4" data-value="4">Georgia Tech</div>
-                            <div class="item" id="startpos5" data-value="5">Marietta</div>
-                            <div class="item" id="startpos6" data-value="6">Peachtree City</div>
-                            <div class="item" id="startpos7" data-value="7">Sandy Springs</div>
-                            <div class="item" id="startpos8" data-value="8 ">Stone Mountain</div>
+                            <div class="item active selected" id="startpos3_1" data-value="1">Alpharetta</div>
+                            <div class="item" id="startpos3_2" data-value="2">Buckhead</div>
+                            <div class="item" id="startpos3_3" data-value="3">Decatur</div>
+                            <div class="item" id="startpos3_4" data-value="4">Georgia Tech</div>
+                            <div class="item" id="startpos3_5" data-value="5">Marietta</div>
+                            <div class="item" id="startpos3_6" data-value="6">Peachtree City</div>
+                            <div class="item" id="startpos3_7" data-value="7">Sandy Springs</div>
+                            <div class="item" id="startpos3_8" data-value="8 ">Stone Mountain</div>
                         </div>
                     </div>
                     <div class="header item" id="basic-addon">Destination: </div>

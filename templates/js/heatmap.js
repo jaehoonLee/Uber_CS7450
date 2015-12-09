@@ -227,7 +227,7 @@ function updateHeatmap(data)
 
                 $.post("/request_start_pos_data/",
                     {
-                        car_type: "0",
+                        car_type: global_type,
                         start_time: start,
                         end_time: end
 

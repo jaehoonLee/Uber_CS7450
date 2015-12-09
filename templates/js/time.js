@@ -44,7 +44,7 @@ function addAxesAndLegend (svg, xAxis, yAxis, margin, chartWidth, chartHeight) {
     legend.append('rect')
 	.attr('class', 'legend-bg')
 	.attr('width',  legendWidth)
-	.style('fill', 'white')
+	.style('fill', 'transparent')
 	.attr('height', legendHeight);
 
     legend.append('rect')
